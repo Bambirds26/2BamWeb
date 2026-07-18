@@ -44,7 +44,7 @@ function json(statusCode, body) {
   };
 }
 
-async function sendEmail(to, subject, html) {
+async function sendEmail(to, subject, html, replyTo) {
   if (!RESEND_API_KEY) {
     throw new Error("RESEND_API_KEY is not set");
   }
@@ -58,7 +58,8 @@ async function sendEmail(to, subject, html) {
       from: FROM_EMAIL,
       to,
       subject,
-      html
+      html,
+      reply_to: replyTo // so hitting "Reply" goes to the requester, not our sender address
     })
   });
   if (!res.ok) {
@@ -151,7 +152,7 @@ async function requestSub(store, data) {
   const errors = [];
   for (const to of recipients) {
     try {
-      await sendEmail(to, subject, html);
+      await sendEmail(to, subject, html, email);
       sent++;
     } catch (err) {
       errors.push({ to, error: String(err.message || err) });
