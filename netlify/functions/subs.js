@@ -12,6 +12,7 @@
 //   BLOBS_SITE_ID      - from Site configuration -> General -> Site details -> Site ID
 //   BLOBS_ACCESS_TOKEN - a Personal Access Token (User settings -> Applications
 //                          -> Personal access tokens -> New access token)
+//   ADMIN_PASSWORD     - any password you pick, used to protect the admin list page
 //
 // IMPORTANT: don't name these starting with "NETLIFY_" — that prefix is
 // reserved for Netlify's own internal variables and custom values there
@@ -31,6 +32,7 @@ const FROM_EMAIL = process.env.SUB_FROM_EMAIL || "2Bambirds@gmail.com";
 const RESEND_API_KEY = process.env.RESEND_API_KEY;
 const SITE_ID = process.env.BLOBS_SITE_ID;
 const BLOBS_TOKEN = process.env.BLOBS_ACCESS_TOKEN;
+const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD;
 
 function subsStore() {
   // One Blobs "store" (namespace) called "subs". Each registered sub is
@@ -91,17 +93,37 @@ async function sendEmail(to, subject, html, replyTo) {
 
 async function registerSub(store, data) {
   const email = normEmail(data.email);
-  if (!email || !data.firstName || !data.lastName || !data.cell) {
+  const permission = !!data.permission; // agreed to be contacted about sub opportunities
+  const wantsEvents = !!data.wantsEvents; // opted in to class/event announcements
+
+  if (!email) {
     return json(400, { ok: false, error: "Missing required fields." });
   }
+  if (!permission && !wantsEvents) {
+    return json(400, { ok: false, error: "Please select at least one option before submitting." });
+  }
+  // Cell is only required if joining the sub list — event-only subscribers
+  // (e.g. the simple "Get on Our List" email box) don't need to give a
+  // phone number, and in that case we don't require a name either.
+  if (permission && !data.cell) {
+    return json(400, { ok: false, error: "Cell phone is required to join the sub list." });
+  }
+
+  // Merge with any existing record so a lightweight submission (e.g. just
+  // an email from "Get on Our List") never erases richer info this person
+  // already gave us (name/cell/permission from a fuller registration),
+  // and vice versa — someone can top up their info over multiple visits
+  // without losing anything.
+  const existing = (await store.get(`sub:${email}`, { type: "json" })) || {};
+
   const record = {
-    firstName: String(data.firstName).trim(),
-    lastName: String(data.lastName).trim(),
-    cell: String(data.cell).trim(),
+    firstName: (data.firstName && String(data.firstName).trim()) || existing.firstName || "",
+    lastName: (data.lastName && String(data.lastName).trim()) || existing.lastName || "",
+    cell: (data.cell && String(data.cell).trim()) || existing.cell || "",
     email,
-    permission: !!data.permission, // agreed to be contacted about sub opportunities
-    wantsEvents: !!data.wantsEvents, // opted in to event/class announcements
-    joinedAt: new Date().toISOString()
+    permission: permission || !!existing.permission,
+    wantsEvents: wantsEvents || !!existing.wantsEvents,
+    joinedAt: existing.joinedAt || new Date().toISOString()
   };
   await store.setJSON(`sub:${email}`, record);
   return json(200, { ok: true });
@@ -180,6 +202,21 @@ async function requestSub(store, data) {
   return json(200, { ok: true, recipientsCount: recipients.length, sent, errors });
 }
 
+async function listSubs(store, data) {
+  const password = data.password || "";
+  if (!ADMIN_PASSWORD || password !== ADMIN_PASSWORD) {
+    return json(401, { ok: false, error: "Incorrect password." });
+  }
+  const { blobs } = await store.list({ prefix: "sub:" });
+  const records = [];
+  for (const b of blobs) {
+    const rec = await store.get(b.key, { type: "json" });
+    if (rec) records.push(rec);
+  }
+  records.sort((a, b) => (a.joinedAt < b.joinedAt ? 1 : -1)); // newest first
+  return json(200, { ok: true, records });
+}
+
 exports.handler = async (event) => {
   if (event.httpMethod === "OPTIONS") {
     return json(200, {});
@@ -206,6 +243,8 @@ exports.handler = async (event) => {
         return await checkSub(store, data || {});
       case "request":
         return await requestSub(store, data || {});
+      case "list":
+        return await listSubs(store, data || {});
       default:
         return json(400, { ok: false, error: "Unknown action" });
     }
