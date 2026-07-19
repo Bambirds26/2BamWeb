@@ -9,11 +9,15 @@
 // Site configuration -> Environment variables):
 //   RESEND_API_KEY     - your Resend API key
 //   SUB_FROM_EMAIL     - e.g. "subs@2bambirds.com" (must be a verified sender/domain in Resend)
-//   NETLIFY_SITE_ID    - from Site configuration -> General -> Site details -> Site ID
-//   NETLIFY_BLOBS_TOKEN - a Personal Access Token (User settings -> Applications
+//   BLOBS_SITE_ID      - from Site configuration -> General -> Site details -> Site ID
+//   BLOBS_ACCESS_TOKEN - a Personal Access Token (User settings -> Applications
 //                          -> Personal access tokens -> New access token)
 //
-// (The last two are a manual workaround for a known Netlify Blobs issue —
+// IMPORTANT: don't name these starting with "NETLIFY_" — that prefix is
+// reserved for Netlify's own internal variables and custom values there
+// get silently ignored, which is a real trap to fall into.
+//
+// (These two are a manual workaround for a known Netlify Blobs issue —
 // "MissingBlobsEnvironmentError" — where automatic detection sometimes
 // doesn't kick in for a function. Passing siteID/token explicitly sidesteps it.)
 //
@@ -25,8 +29,8 @@ const { getStore } = require("@netlify/blobs");
 
 const FROM_EMAIL = process.env.SUB_FROM_EMAIL || "2Bambirds@gmail.com";
 const RESEND_API_KEY = process.env.RESEND_API_KEY;
-const SITE_ID = process.env.NETLIFY_SITE_ID;
-const BLOBS_TOKEN = process.env.NETLIFY_BLOBS_TOKEN;
+const SITE_ID = process.env.BLOBS_SITE_ID;
+const BLOBS_TOKEN = process.env.BLOBS_ACCESS_TOKEN;
 
 function subsStore() {
   // One Blobs "store" (namespace) called "subs". Each registered sub is
