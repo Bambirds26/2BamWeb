@@ -102,30 +102,55 @@ async function registerSub(store, data) {
   if (!permission && !wantsEvents) {
     return json(400, { ok: false, error: "Please select at least one option before submitting." });
   }
-  // Cell is only required if joining the sub list — event-only subscribers
-  // (e.g. the simple "Get on Our List" email box) don't need to give a
-  // phone number, and in that case we don't require a name either.
-  if (permission && !data.cell) {
-    return json(400, { ok: false, error: "Cell phone is required to join the sub list." });
-  }
+  // Cell is always optional now — the Need a Sub form separately asks each
+  // requester how they want to be contacted back, collecting a cell there
+  // if needed rather than requiring one up front here.
 
   // Merge with any existing record so a lightweight submission (e.g. just
   // an email from "Get on Our List") never erases richer info this person
   // already gave us (name/cell/permission from a fuller registration),
   // and vice versa — someone can top up their info over multiple visits
   // without losing anything.
+  //
+  // Exception: the Edit My Info page sends overwrite:true, since it shows
+  // someone their own current info and lets them deliberately change or
+  // clear any of it — merging would silently ignore a real edit (like
+  // unchecking the sub list, or clearing a field on purpose).
   const existing = (await store.get(`sub:${email}`, { type: "json" })) || {};
+  const overwrite = !!data.overwrite;
 
   const record = {
-    firstName: (data.firstName && String(data.firstName).trim()) || existing.firstName || "",
-    lastName: (data.lastName && String(data.lastName).trim()) || existing.lastName || "",
-    cell: (data.cell && String(data.cell).trim()) || existing.cell || "",
+    firstName: overwrite ? String(data.firstName || "").trim() : (data.firstName && String(data.firstName).trim()) || existing.firstName || "",
+    lastName: overwrite ? String(data.lastName || "").trim() : (data.lastName && String(data.lastName).trim()) || existing.lastName || "",
+    cell: overwrite ? String(data.cell || "").trim() : (data.cell && String(data.cell).trim()) || existing.cell || "",
     email,
-    permission: permission || !!existing.permission,
-    wantsEvents: wantsEvents || !!existing.wantsEvents,
+    town: overwrite ? String(data.town || "").trim() : (data.town && String(data.town).trim()) || existing.town || "",
+    townScope: overwrite ? (String(data.townScope || "").trim() || "own") : (data.townScope && String(data.townScope).trim()) || existing.townScope || "own",
+    level: overwrite ? (String(data.level || "").trim() || "All") : (data.level && String(data.level).trim()) || existing.level || "All",
+    permission: overwrite ? permission : permission || !!existing.permission,
+    wantsEvents: overwrite ? wantsEvents : wantsEvents || !!existing.wantsEvents,
     joinedAt: existing.joinedAt || new Date().toISOString()
   };
   await store.setJSON(`sub:${email}`, record);
+  return json(200, { ok: true });
+}
+
+async function unsubscribeSub(store, data) {
+  const email = normEmail(data.email);
+  const scope = data.scope; // "sublist" | "events" | "all"
+  if (!email || !["sublist", "events", "all"].includes(scope)) {
+    return json(400, { ok: false, error: "Missing or invalid request." });
+  }
+  const existing = await store.get(`sub:${email}`, { type: "json" });
+  if (!existing) {
+    // Idempotent — if they're not in the list anyway, that's the desired end state.
+    return json(200, { ok: true, alreadyOff: true });
+  }
+  if (scope === "sublist" || scope === "all") existing.permission = false;
+  if (scope === "events" || scope === "all") existing.wantsEvents = false;
+  // Record stays (with switches off) rather than being deleted — matches
+  // "off means no emails" without losing history of who's been on the list.
+  await store.setJSON(`sub:${email}`, existing);
   return json(200, { ok: true });
 }
 
@@ -138,7 +163,7 @@ async function checkSub(store, data) {
 
 async function requestSub(store, data) {
   const email = normEmail(data.email);
-  if (!email || !data.name || !data.date || !data.time || !data.location || !data.numSubs) {
+  if (!email || !data.name || !data.date || !data.time || !data.numSubs) {
     return json(400, { ok: false, error: "Missing required fields." });
   }
   const requester = await store.get(`sub:${email}`, { type: "json" });
@@ -149,50 +174,107 @@ async function requestSub(store, data) {
     });
   }
 
-  // Log the request itself for record-keeping.
+  // Log the request itself for record-keeping. Town is now required, so
+  // there's always something concrete to match against.
+  const contactMethod = ["email", "cell", "both"].includes(data.contactMethod) ? data.contactMethod : "email";
   const reqRecord = {
     name: String(data.name).trim(),
     email,
     date: String(data.date).trim(),
     time: String(data.time).trim(),
-    location: String(data.location).trim(),
+    location: String(data.location || "").trim(),
     numSubs: Number(data.numSubs) || 1,
+    level: data.level ? String(data.level).trim() : "All",
+    contactMethod,
+    cell: (contactMethod === "cell" || contactMethod === "both") ? String(data.cell || "").trim() : "",
     createdAt: new Date().toISOString()
   };
+  if (!reqRecord.location) {
+    return json(400, { ok: false, error: "Please enter the town the game is located in." });
+  }
+  if ((contactMethod === "cell" || contactMethod === "both") && !reqRecord.cell) {
+    return json(400, { ok: false, error: "Please provide a cell number, or choose Email contact instead." });
+  }
+
+  // Limit repeat requests for the exact same event (same requester + date +
+  // time + town) to 3 total, so one person can't accidentally (or
+  // otherwise) spam the whole sub list with repeated blasts for one game.
+  const { blobs: existingRequestBlobs } = await store.list({ prefix: "request:" });
+  let sameEventCount = 0;
+  for (const b of existingRequestBlobs) {
+    const r = await store.get(b.key, { type: "json" });
+    if (
+      r && r.email === email &&
+      r.date === reqRecord.date && r.time === reqRecord.time &&
+      r.location.toLowerCase() === reqRecord.location.toLowerCase()
+    ) {
+      sameEventCount++;
+    }
+  }
+  if (sameEventCount >= 3) {
+    return json(400, {
+      ok: false,
+      error: "You've already requested a sub for this event 3 times — that's the limit, so as not to bombard people. Please reach out to your existing responses directly."
+    });
+  }
+
   const reqKey = `request:${Date.now()}-${email}`;
   await store.setJSON(reqKey, reqRecord);
 
-  // Gather everyone who has given permission to be contacted (except the requester).
+  const gameTown = reqRecord.location.toLowerCase();
+  function sameTown(a) {
+    return String(a || "").trim().toLowerCase() === gameTown;
+  }
+
+  // Gather everyone who has given permission to be contacted (except the
+  // requester). Matching is entirely on the sub's own preference from when
+  // they joined: "include me in other towns" always gets it; "your town
+  // only" gets it only if their town matches. A sub who never entered a
+  // town has nothing to match against, so we don't penalize them for
+  // that — treat it as "no restriction" rather than silently excluding
+  // them from every request forever.
   const { blobs } = await store.list({ prefix: "sub:" });
   const recipients = [];
   for (const b of blobs) {
     const rec = await store.get(b.key, { type: "json" });
-    if (rec && rec.permission && rec.email !== email) {
+    if (!rec || !rec.permission || rec.email === email) continue;
+    if (rec.townScope === "all" || !rec.town || sameTown(rec.town)) {
       recipients.push(rec.email);
     }
   }
 
   const subject = `Sub needed: ${reqRecord.date} at ${reqRecord.time}`;
-  const html = `
+  const siteUrl = process.env.URL || ""; // Netlify auto-provides this
+  function buildHtml(recipientEmail) {
+    const unsubUrl = `${siteUrl}/unsubscribe.html?email=${encodeURIComponent(recipientEmail)}`;
+    const showEmail = contactMethod === "email" || contactMethod === "both";
+    const showCell = (contactMethod === "cell" || contactMethod === "both") && reqRecord.cell;
+    return `
     <p>Hi there,</p>
     <p><strong>${reqRecord.name}</strong> is looking for <strong>${reqRecord.numSubs}</strong>
        sub${reqRecord.numSubs === 1 ? "" : "s"} for a game:</p>
     <ul>
       <li><strong>Date:</strong> ${reqRecord.date}</li>
       <li><strong>Time:</strong> ${reqRecord.time}</li>
-      <li><strong>Location:</strong> ${reqRecord.location}</li>
+      ${reqRecord.location ? `<li><strong>Town:</strong> ${reqRecord.location}</li>` : ""}
+      <li><strong>Level:</strong> ${reqRecord.level}</li>
     </ul>
-    <p>If you're interested and available, reply directly to
-       <a href="mailto:${email}">${email}</a> to let ${reqRecord.name} know!</p>
+    <p>If you're interested and available, reach out to ${reqRecord.name} directly:</p>
+    <ul>
+      ${showEmail ? `<li>Email: <a href="mailto:${email}">${email}</a></li>` : ""}
+      ${showCell ? `<li>Cell: <a href="tel:${reqRecord.cell.replace(/[^\d+]/g, "")}">${reqRecord.cell}</a></li>` : ""}
+    </ul>
     <p style="color:#888;font-size:12px">You're receiving this because you're on the
-       2 Bam Birds sub list. — 2 Bam Birds</p>
+       2 Bam Birds sub list. — 2 Bam Birds<br>
+       <a href="${unsubUrl}" style="color:#888">Unsubscribe from sub list requests</a></p>
   `;
+  }
 
   let sent = 0;
   const errors = [];
   for (const to of recipients) {
     try {
-      await sendEmail(to, subject, html, email);
+      await sendEmail(to, subject, buildHtml(to), email);
       sent++;
     } catch (err) {
       errors.push({ to, error: String(err.message || err) });
@@ -241,6 +323,8 @@ exports.handler = async (event) => {
         return await registerSub(store, data || {});
       case "check":
         return await checkSub(store, data || {});
+      case "unsubscribe":
+        return await unsubscribeSub(store, data || {});
       case "request":
         return await requestSub(store, data || {});
       case "list":
