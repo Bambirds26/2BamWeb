@@ -44,6 +44,9 @@
   tr:hover td{background:#fafafa}
   .yes{color:var(--teal); font-weight:700}
   .no{color:#b8a; opacity:.5}
+  td.actions{white-space:nowrap}
+  td.actions a{color:#a33; font-size:.78rem; margin-right:10px; text-decoration:none}
+  td.actions a:hover{text-decoration:underline}
   .tablewrap{overflow-x:auto; max-height:70vh; overflow-y:auto; border:1px solid #eee; border-radius:6px}
   .err{color:#a33; margin-top:10px; font-size:.9rem}
   .loading{padding:40px; text-align:center; color:#888}
@@ -143,9 +146,16 @@ function renderTable(records){
       <td>${escapeHtml(r.lastName)}</td>
       <td>${escapeHtml(r.email)}</td>
       <td>${escapeHtml(r.cell || "—")}</td>
+      <td>${escapeHtml(r.town || "—")}${r.town ? ` <span style="color:#8b968d;font-size:.7rem">(${r.townScope==="all"?"any town":"own town only"})</span>` : ""}</td>
+      <td>${escapeHtml(r.level || "All")}</td>
       <td class="${r.permission ? "yes" : "no"}">${r.permission ? "Yes" : "No"}</td>
       <td class="${r.wantsEvents ? "yes" : "no"}">${r.wantsEvents ? "Yes" : "No"}</td>
       <td>${formatDate(r.joinedAt)}</td>
+      <td class="actions">
+        ${r.permission ? `<a href="#" onclick="return adminRemove('${escapeAttr(r.email)}','sublist')">Remove Sub</a>` : ""}
+        ${r.wantsEvents ? `<a href="#" onclick="return adminRemove('${escapeAttr(r.email)}','events')">Remove Events</a>` : ""}
+        <a href="#" onclick="return adminRemove('${escapeAttr(r.email)}','all')">Remove All</a>
+      </td>
     </tr>
   `).join("");
 
@@ -156,13 +166,36 @@ function renderTable(records){
         <thead>
           <tr>
             <th>First Name</th><th>Last Name</th><th>Email</th><th>Cell</th>
-            <th>Sub List</th><th>Class/Event Info</th><th>Joined</th>
+            <th>Town</th><th>Level</th>
+            <th>Sub List</th><th>Class/Event Info</th><th>Joined</th><th>Actions</th>
           </tr>
         </thead>
         <tbody>${rows}</tbody>
       </table>
     </div>
   `;
+}
+
+function escapeAttr(s){
+  return String(s || "").replace(/'/g, "\\'");
+}
+
+async function adminRemove(email, scope){
+  const labels = {sublist:"the Sub List", events:"Class/Event Info", all:"everything"};
+  if(!confirm(`Remove ${email} from ${labels[scope]}?`)) return false;
+  try{
+    const res = await fetch(API, {
+      method:"POST",
+      headers:{"Content-Type":"application/json"},
+      body: JSON.stringify({ action:"unsubscribe", data:{ email, scope } })
+    });
+    const json = await res.json();
+    if(!json.ok) throw new Error(json.error || "Something went wrong.");
+    loadData();
+  }catch(err){
+    alert("Failed to remove: " + err.message);
+  }
+  return false;
 }
 
 function escapeHtml(s){
