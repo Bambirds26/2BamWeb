@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Unsubscribe — 2 Bam Birds</title>
+<style>
+  :root{
+    --navy:#023D56;
+    --teal:#02696B;
+    --teal-bright:#03B3B6;
+    --purple:#461B5C;
+    --lavender:#8B6FB3;
+    --olive:#556B2F;
+    --cream:#FBF8F3;
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0; font-family:'Montserrat',Arial,sans-serif; background:var(--cream);
+    color:#243; min-height:100vh; display:flex; align-items:center; justify-content:center;
+    padding:24px;
+  }
+  .card{
+    max-width:460px; width:100%; background:#fff; border:1px solid #E7E2D6;
+    border-radius:12px; padding:32px 28px; text-align:center;
+  }
+  h1{color:var(--navy); font-size:1.4rem; margin:0 0 6px}
+  .sub{color:#5a6870; font-size:.9rem; margin-bottom:22px; line-height:1.5}
+  .field{text-align:left; margin-bottom:16px}
+  .field label{display:block; font-weight:700; font-size:.85rem; color:var(--navy); margin-bottom:5px}
+  .field input{
+    width:100%; padding:10px 12px; font-size:1rem; border:1px solid #ccc;
+    border-radius:6px; font-family:inherit;
+  }
+  button{
+    display:block; width:100%; border:none; border-radius:8px; padding:12px 16px;
+    font-size:.95rem; font-weight:700; font-family:inherit; cursor:pointer; margin-bottom:10px;
+    color:#fff;
+  }
+  button:hover{opacity:.9}
+  .btn-navy{background:var(--navy)}
+  .btn-teal{background:var(--teal)}
+  .btn-purple{background:var(--purple)}
+  .btn-outline{background:#fff; color:var(--navy); border:2px solid var(--navy)}
+  .err{color:#a33; font-size:.88rem; margin:8px 0}
+  .msg{color:var(--teal); font-size:.88rem; margin:8px 0}
+  .confirm .big{font-size:2.4rem; margin-bottom:8px}
+  .email-display{
+    background:var(--cream); border-radius:6px; padding:10px 12px; font-weight:700;
+    color:var(--navy); margin-bottom:18px; word-break:break-all;
+  }
+</style>
+</head>
+<body>
+
+  <div class="card">
+
+    <div id="stepEmail">
+      <h1>🦚 Unsubscribe</h1>
+      <p class="sub">Enter your email, then choose what you'd like to stop receiving.</p>
+      <div class="field">
+        <label for="emailInput">Email</label>
+        <input type="email" id="emailInput" placeholder="your@email.com">
+      </div>
+      <button class="btn-navy" onclick="showChoices()">Continue</button>
+      <div class="err" id="emailErr"></div>
+    </div>
+
+    <div id="stepChoices" style="display:none">
+      <h1>🦚 Unsubscribe</h1>
+      <p class="sub">What would you like to stop receiving?</p>
+      <div class="email-display" id="emailDisplay"></div>
+      <button class="btn-teal" onclick="doUnsub('sublist')">Remove me from the Sub List</button>
+      <button class="btn-purple" onclick="doUnsub('events')">Remove me from Class &amp; Event Info</button>
+      <button class="btn-outline" onclick="doUnsub('all')">Remove me from everything</button>
+      <div class="err" id="choiceErr"></div>
+    </div>
+
+    <div id="stepDone" style="display:none" class="confirm">
+      <div class="big">✅</div>
+      <h1>Done</h1>
+      <p class="sub" id="doneText">You've been updated.</p>
+    </div>
+
+  </div>
+
+<script>
+const API = "/.netlify/functions/subs";
+const params = new URLSearchParams(location.search);
+const prefillEmail = params.get("email");
+
+if(prefillEmail){
+  document.getElementById("emailInput").value = prefillEmail;
+  showChoices();
+}
+
+function showChoices(){
+  const email = document.getElementById("emailInput").value.trim();
+  const errEl = document.getElementById("emailErr");
+  if(!email || !email.includes("@")){
+    errEl.textContent = "Please enter a valid email address.";
+    return;
+  }
+  errEl.textContent = "";
+  document.getElementById("emailDisplay").textContent = email;
+  document.getElementById("stepEmail").style.display = "none";
+  document.getElementById("stepChoices").style.display = "block";
+}
+
+async function doUnsub(scope){
+  const email = document.getElementById("emailInput").value.trim();
+  const errEl = document.getElementById("choiceErr");
+  errEl.textContent = "";
+  const buttons = document.querySelectorAll("#stepChoices button");
+  buttons.forEach(b => b.disabled = true);
+  try{
+    const res = await fetch(API, {
+      method:"POST",
+      headers:{"Content-Type":"application/json"},
+      body: JSON.stringify({ action:"unsubscribe", data:{ email, scope } })
+    });
+    const json = await res.json();
+    if(!json.ok) throw new Error(json.error || "Something went wrong.");
+
+    const messages = {
+      sublist: "You've been removed from the Sub List. You'll no longer get emails when someone needs a sub.",
+      events: "You've been removed from Class & Event info. You'll no longer get those updates.",
+      all: "You've been removed from everything. You won't receive any further emails from our list."
+    };
+    document.getElementById("doneText").textContent = messages[scope];
+    document.getElementById("stepChoices").style.display = "none";
+    document.getElementById("stepDone").style.display = "block";
+  }catch(err){
+    errEl.textContent = err.message;
+    buttons.forEach(b => b.disabled = false);
+  }
+}
+</script>
+</body>
+</html>
