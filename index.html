@@ -1,0 +1,2142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2 BAM BIRDS | American Mahjong Lessons</title>
+<meta name="description" content="2 BAM BIRDS — American Mahjong (NMJL) lessons and gear.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --purple:#5B2D82; --purple-dark:#0E5B67; --purple-light:#b5a0c6;
+    --lavender:#C9B6DE; --lavender-light:#EEE7F5; --lavender-text:#80639D;
+    --teal:#0E5B67; --teal-dark:#1F455B; --slate-blue:#B9CAD3; --turquoise:#02696B; --turquoise-bright:#03B3B6; --peacock-purple:#461B5C; --logo-navy:#023D56;
+    --hero-tile:url("assets/img/hero-tile-logo.png");
+    --eye-1:url("assets/img/eye-1.png");
+    --eye-2:url("assets/img/eye-2.png");
+    --eye-3:url("assets/img/eye-3.png");
+    --eye-4:url("assets/img/eye-4.png");
+    --olive:#556B2F; --olive-dark:#3b4a20; --olive-light:#c3cbb6;
+    --cream:#FFF9F4; --lav:#FFF9F4; --lav-deep:#EEE7F5;
+    --ink:#3b2440;
+    --radius:22px;
+    --logo-img:url("assets/img/site-logo.png");
+    --shadow:0 8px 24px rgba(60,40,50,.14);
+    --toile-pattern:url("data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%27180%27 height=%27180%27 viewBox=%270 0 180 180%27%3E%3Crect width=%27180%27 height=%27180%27 fill=%27%23F7F3EA%27/%3E%3Cg fill=%27none%27 stroke=%27%23556B2F%27 stroke-width=%271.4%27 opacity=%27.25%27%3E%3Cpath d=%27M-15 154C30 143 25 94 72 77S130 39 195 20%27/%3E%3Cpath d=%27M38 188C43 141 85 126 91 82S73 25 91-12%27/%3E%3Cpath d=%27M20 53c24 2 35 18 39 39M122 126c-22-2-34-18-37-39%27/%3E%3Ccircle cx=%2772%27 cy=%2777%27 r=%2713%27/%3E%3Cpath d=%27M72 64c4 7 8 9 13 13-7 3-10 7-13 13-4-7-8-10-13-13 7-3 10-7 13-13z%27/%3E%3C/g%3E%3Cg fill=%27%23556B2F%27 opacity=%27.14%27%3E%3Cellipse cx=%2742%27 cy=%27116%27 rx=%275%27 ry=%2713%27 transform=%27rotate(-45 42 116)%27/%3E%3Cellipse cx=%2758%27 cy=%2798%27 rx=%275%27 ry=%2713%27 transform=%27rotate(34 58 98)%27/%3E%3Cellipse cx=%27108%27 cy=%2755%27 rx=%275%27 ry=%2713%27 transform=%27rotate(58 108 55)%27/%3E%3Cellipse cx=%27131%27 cy=%2741%27 rx=%275%27 ry=%2713%27 transform=%27rotate(-30 131 41)%27/%3E%3C/g%3E%3Cg fill=%27none%27 stroke=%27%230E5B67%27 stroke-width=%271%27 opacity=%27.13%27%3E%3Crect x=%27125%27 y=%27132%27 width=%2730%27 height=%2738%27 rx=%276%27/%3E%3Cpath d=%27M135 143v16m10-16v16%27/%3E%3C/g%3E%3C/svg%3E");
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  .page{display:none}
+  .page.active{display:block}
+  html{scroll-behavior:smooth;overflow-x:hidden}
+  body{font-family:'Montserrat',sans-serif;color:var(--ink);background-color:#F7F3EA;position:relative;overflow-x:hidden}
+  body::before{content:"";position:fixed;inset:0;z-index:-1;background-color:#F7F3EA;
+       background-image:linear-gradient(rgba(247,243,234,.72),rgba(247,243,234,.72)),url(assets/img/peacock-wallpaper.jpg);
+       background-size:cover;background-position:center 38%;background-repeat:no-repeat;pointer-events:none}
+  .purple-dot{color:var(--purple);font-size:.72em;line-height:1;vertical-align:.08em}
+  h1,h2,h3,h4{font-family:'Montserrat',sans-serif;line-height:1.15}
+  img{max-width:100%;display:block}
+  a{color:var(--teal);text-decoration:none}
+  section{scroll-margin-top:84px}
+
+  /* ---------- NAV ---------- */
+  nav{position:sticky;top:0;z-index:50;background:rgba(185,202,211,.94);backdrop-filter:blur(8px);
+      border-bottom:12px solid #556B2F;display:flex;align-items:center;
+      justify-content:space-between;padding:10px 5vw}
+  .brand{display:flex;align-items:center;gap:10px;font-family:'Montserrat',sans-serif;font-weight:800;font-size:1.3rem;
+       color:var(--teal-dark);transition:color .2s;text-shadow:0 1px 2px rgba(31,69,91,.16)}
+  .brand .bam{color:var(--teal-dark)}.brand .chicks{color:var(--teal-dark)}
+  .brand:hover,.brand:focus-visible,.brand:hover .bam,.brand:focus-visible .bam,
+  .brand:hover .chicks,.brand:focus-visible .chicks{color:var(--purple)}
+  .brand-mark{width:44px;height:44px;border-radius:50%;background:var(--lav-deep) var(--logo-img) center/cover no-repeat;flex-shrink:0}
+  .navlinks{display:flex;gap:22px;align-items:center;flex-wrap:wrap;justify-content:flex-end}
+  .navlinks a{font-weight:700;font-size:.98rem}
+  .navlinks a:not(.btn){color:#8A2BE2;transition:color .2s}
+  .navlinks a:not(.btn):hover,.navlinks a:not(.btn):focus-visible{color:var(--teal)}
+  .btn{display:inline-block;border:none;cursor:pointer;font-family:'Montserrat',sans-serif;font-weight:700;
+       border-radius:999px;padding:12px 26px;font-size:1rem;transition:.2s;text-align:center}
+  .btn-lavender{background:var(--lavender);color:var(--purple-dark);box-shadow:0 4px 14px rgba(128,99,157,.32)}
+  .btn-lavender:hover{transform:translateY(-2px);background:#B49BCF}
+  .btn-purple{background:var(--purple);color:#fff;box-shadow:0 4px 14px rgba(91,45,130,.35)}
+  .btn-purple:hover{transform:translateY(-2px);background:#4a246a}
+  .btn-outline{background:#fff;color:var(--purple);border:2px solid var(--purple)}
+  .btn-outline:hover{background:var(--lav-deep)}
+  .btn-teal{background:var(--teal);color:#fff}
+  .btn-teal:hover{background:var(--teal-dark)}
+  .btn-olive{background:var(--olive);color:#fff;box-shadow:0 4px 14px rgba(118,122,63,.35)}
+  .btn-olive:hover{transform:translateY(-2px);background:var(--olive-dark)}
+  .btn-turquoise{background:var(--turquoise);color:#fff;box-shadow:0 4px 14px rgba(2,105,107,.35)}
+  .btn-turquoise:hover{transform:translateY(-2px);background:#024e50}
+  .btn-navy{background:var(--logo-navy);color:#fff;box-shadow:0 4px 14px rgba(2,61,86,.35)}
+  .btn-navy:hover{transform:translateY(-2px);background:#012c3f}
+  .btn[disabled]{opacity:.5;cursor:not-allowed;transform:none}
+
+  /* ---------- HERO ---------- */
+  .hero{padding:64px 5vw 48px;background-color:#F7F3EA;position:relative;overflow:hidden}
+  .hero-inner{display:flex;align-items:center;justify-content:center;gap:52px;max-width:980px;margin:0 auto}
+  .hero-tile{width:min(311px,75vw);aspect-ratio:450/801;flex-shrink:0;border-radius:18px;
+       box-shadow:0 24px 48px rgba(2,61,86,.45),0 8px 16px rgba(2,61,86,.3);background:var(--hero-tile) center/cover no-repeat}
+  .hero-text{text-align:left}
+  @media(max-width:720px){.hero-inner{flex-direction:column;align-items:flex-start;text-align:left}.hero-text{text-align:left}}
+  .hero .script{font-family:'Montserrat',sans-serif;color:var(--lavender-text);font-size:1.35rem;font-weight:700;letter-spacing:.06em}
+  .hero h1{font-size:clamp(2.1rem,5.5vw,3.4rem);color:var(--purple-dark);margin:6px 0 14px}
+  .hero h1 .hl{color:var(--lavender-text)}
+  .hero p.sub{max-width:440px;margin:0 0 28px;font-size:1.12rem;font-weight:500;line-height:1.6}
+  .hero .cta-row{display:flex;gap:14px;justify-content:flex-start;flex-wrap:wrap}
+  .ig-follow-btn{display:inline-flex;align-items:center;gap:10px;padding:12px 26px;border-radius:999px;
+       font-family:'Montserrat',sans-serif;font-weight:700;color:#fff;text-decoration:none;
+       background:linear-gradient(45deg,#c3cbb6,#7a9552,#3b4a20);
+       box-shadow:0 4px 14px rgba(85,107,47,.35);transition:.2s}
+  .ig-follow-btn:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(85,107,47,.45)}
+  @media(max-width:720px){.hero p.sub{margin:0 0 28px}.hero .cta-row{justify-content:flex-start}}
+
+  /* ---------- FEATURE CARDS ---------- */
+  .features-wrap{padding:10px 5vw 60px;max-width:1200px;margin:0 auto}
+  .features-label{font-family:'Montserrat',sans-serif;font-weight:800;color:var(--teal-dark);
+       text-transform:uppercase;letter-spacing:.14em;font-size:1.1rem;text-align:center;margin:0 0 14px}
+  .features-label.second{margin-top:38px}
+  .features-primary{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px}
+  .features-secondary{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px}
+  .fcard{background:#fff;border-radius:var(--radius);padding:30px 24px;text-align:center;
+         box-shadow:var(--shadow);border-top:6px solid var(--purple);transition:.2s;display:block;color:var(--ink)}
+  .fcard:hover{transform:translateY(-5px)}
+  .fcard.no-hover:hover{transform:none}
+  .fcard.c-lavender{border-top-color:var(--lavender)}
+  .fcard.c-teal{border-top-color:var(--teal)}
+  .fcard.c-lav{border-top-color:var(--lavender)}
+  .fcard.c-olive{border-top-color:#556B2F}
+  .fcard .emoji{font-size:2.2rem}
+  .fcard h3{color:var(--purple-dark);margin:10px 0 8px;font-size:1.25rem}
+  .fcard p{font-size:.95rem;line-height:1.5}
+  .features-primary .fcard{padding:38px 26px;border-top-width:8px}
+  .features-primary .fcard .emoji{font-size:2.7rem}
+  .features-primary .fcard h3{font-size:1.45rem}
+  .features-secondary .fcard{padding:22px 18px;box-shadow:0 4px 14px rgba(120,80,180,.10)}
+  .features-secondary .fcard .emoji{font-size:1.8rem}
+  .features-secondary .fcard .about-card-logo{width:64px;height:64px;border-radius:50%;margin:0 auto;
+       background:var(--lav-deep);display:flex;align-items:center;justify-content:center;font-size:1.8rem}
+  .features-secondary .fcard h3{font-size:1.05rem;margin:6px 0 4px}
+  .features-secondary .fcard p{font-size:.85rem}
+
+  /* Learn/Play/Events hub pages reuse .features-secondary for their
+     equal-sized boxes, but these should read as substantial primary
+     content — not the small home-page shortcut row — so give them
+     more room. */
+  #page-learn .features-secondary,#page-play .features-secondary,#page-events .features-secondary{
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px}
+  #page-learn .features-secondary .fcard,#page-play .features-secondary .fcard,#page-events .features-secondary .fcard{
+    padding:44px 30px;border-top-width:7px}
+  #page-learn .features-secondary .fcard .emoji,#page-play .features-secondary .fcard .emoji,#page-events .features-secondary .fcard .emoji{
+    font-size:2.4rem}
+  #page-learn .features-secondary .fcard .about-card-logo,#page-play .features-secondary .fcard .about-card-logo,#page-events .features-secondary .fcard .about-card-logo{
+    width:78px;height:78px;font-size:2.2rem}
+  #page-learn .features-secondary .fcard h3,#page-play .features-secondary .fcard h3,#page-events .features-secondary .fcard h3{
+    font-size:1.25rem;margin:10px 0 6px}
+  #page-learn .features-secondary .fcard p,#page-play .features-secondary .fcard p,#page-events .features-secondary .fcard p{
+    font-size:.95rem}
+
+  /* ---------- SECTION SHELL ---------- */
+  .band{padding:64px 5vw}
+
+  /* Full-bleed horizontal Learn/Play/Events sections on the home page */
+  .mega-link{display:block;width:100%;padding:80px 5vw;text-align:center;
+       text-decoration:none;transition:.2s;box-sizing:border-box;overflow:hidden;position:relative;
+       background-size:cover;background-position:center;background-repeat:no-repeat}
+  .mega-link .emoji{font-size:3.2rem;margin-bottom:6px}
+  .mega-link h2{color:#fff;font-size:clamp(2.1rem,5.5vw,3.4rem);margin:6px 0 14px;font-weight:800}
+  .mega-link p{color:rgba(255,255,255,.92);font-size:1.08rem;max-width:640px;margin:0 auto 26px;line-height:1.6}
+  .mega-link .btn{box-shadow:none}
+  .mega-learn{background-color:var(--purple)}
+  .mega-play{background-color:var(--olive)}
+  .mega-events{background-color:var(--turquoise-bright)}
+  @media(max-width:640px){.mega-link{padding:56px 6vw}}
+
+  /* Tap-to-reveal: front content slides/fades away right-to-left,
+     revealing the hub menu stacked behind it in the same space. */
+  .mega-stack{position:relative;max-width:820px;margin:0 auto;transition:min-height .3s ease;overflow:hidden}
+  .mega-front{position:relative;z-index:2;transition:transform .55s cubic-bezier(.22,.61,.36,1),opacity .45s ease}
+  .mega-link.revealed .mega-front{transform:translateX(-115%);opacity:0;pointer-events:none}
+  .mega-back{position:absolute;top:0;left:0;width:100%;height:100%;opacity:0;transform:translateX(50px);
+       pointer-events:none;transition:opacity .45s ease .12s,transform .55s cubic-bezier(.22,.61,.36,1) .12s}
+  .mega-link.revealed .mega-back{opacity:1;transform:translateX(0);pointer-events:auto}
+  /* Staggered sections (Learn/Events/Play): keep the reveal confined to the
+     2/3 photo pane instead of covering the whole band, on whichever side
+     the photo actually sits, with the cards centered inside it. */
+  .mega-learn .mega-back,.mega-play .mega-back{left:auto;right:0;width:66.67%;
+       display:flex;flex-direction:column;justify-content:center;padding:0 3vw!important;box-sizing:border-box}
+  .mega-events .mega-back{left:0;right:auto;width:66.67%;
+       display:flex;flex-direction:column;justify-content:center;padding:0 3vw!important;box-sizing:border-box}
+  .mega-learn .mega-reveal-grid,.mega-events .mega-reveal-grid,.mega-play .mega-reveal-grid{
+       grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px}
+  .mega-learn .mega-reveal-grid a,.mega-events .mega-reveal-grid a,.mega-play .mega-reveal-grid a{padding:16px 12px}
+  .mega-learn .mega-back-btn,.mega-events .mega-back-btn,.mega-play .mega-back-btn{margin-top:14px;align-self:center}
+  @media(max-width:800px){
+    .mega-learn .mega-back,.mega-events .mega-back,.mega-play .mega-back{width:100%;left:0;right:auto;padding:40px 5vw!important}
+  }
+
+  .mega-back-btn{display:inline-block;margin-top:22px;padding:9px 22px;border-radius:999px;
+       background:rgba(255,255,255,.16);border:1.5px solid rgba(255,255,255,.55);
+       font-family:'Montserrat',sans-serif;font-size:.8rem;color:#fff;cursor:pointer;
+       user-select:none;font-weight:700;transition:background .2s}
+  .mega-back-btn:hover{background:rgba(255,255,255,.28)}
+
+  /* Staggered home sections: 1/3 text pane + 2/3 photo pane, alternating
+     sides, stacking on mobile. Height is locked (not min-height) with
+     overflow:hidden on both the row and the photo pane so photo/video
+     dimensions can never grow the band unevenly taller than its neighbors. */
+  .mega-split-front{height:440px;overflow:hidden;display:flex;align-items:stretch;padding:0;text-align:left}
+  .mega-textpane{width:33.33%;flex-shrink:0;display:flex;flex-direction:column;
+       justify-content:center;padding:60px 4vw;box-sizing:border-box;cursor:pointer;
+       user-select:none;transition:background .2s}
+  .mega-textpane:hover{background:rgba(255,255,255,.06)}
+  .mega-photopane{width:66.67%;height:440px;position:relative;overflow:hidden}
+  .mega-photo-tint{position:absolute;inset:0;pointer-events:none}
+  .mega-photopane img,.mega-photopane video{width:100%;height:100%;object-fit:cover;display:block}
+  .mega-split-reverse{flex-direction:row-reverse}
+  @media(max-width:800px){
+    .mega-split-front{height:auto;flex-direction:column}
+    .mega-split-front.mega-split-reverse{flex-direction:column}
+    .mega-textpane,.mega-photopane{width:100%;height:auto}
+    .mega-textpane{text-align:center;align-items:center;padding:40px 6vw}
+    .mega-photopane{height:280px}
+  }
+  .mega-reveal-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:14px}
+  .mega-textpane .emoji{text-align:center}
+  .mega-tap-cue{font-size:.78rem;font-weight:700;letter-spacing:.03em;color:rgba(255,255,255,.75);margin-top:14px}
+  .mega-reveal-grid a{display:block;background:rgba(255,255,255,.96);border-radius:14px;padding:22px 18px;
+       text-decoration:none;color:var(--ink);font-family:'Montserrat',sans-serif;transition:.2s}
+  .mega-reveal-grid a:hover{transform:translateY(-3px);box-shadow:0 8px 20px rgba(0,0,0,.18)}
+  .mega-reveal-grid .emoji{font-size:1.8rem}
+  .mega-reveal-grid h4{margin:8px 0 4px;font-size:1rem;color:var(--purple-dark)}
+  .mega-reveal-grid p{font-size:.82rem;color:#555;margin:0;line-height:1.4}
+  .band.alt{background:var(--cream)}
+  #page-about,#page-lessons{background-color:#DDE3D2;background-image:linear-gradient(rgba(85,107,47,.26),rgba(85,107,47,.26)),url(assets/img/peacock-wallpaper.jpg);
+       background-size:cover;background-position:center 38%;background-repeat:no-repeat}
+  .band-inner{max-width:1100px;margin:0 auto}
+  .kicker{text-align:center;font-family:'Montserrat',sans-serif;font-weight:700;color:var(--teal);
+          letter-spacing:.18em;text-transform:uppercase;font-size:.85rem}
+  #page-learn .kicker,#page-play .kicker,#page-events .kicker{font-size:1.3rem;font-weight:900;color:#8A2BE2}
+  .back-link{display:block;text-align:center;font-family:'Montserrat',sans-serif;font-weight:700;
+       font-size:.85rem;color:var(--teal-dark);text-decoration:none;margin-bottom:12px}
+  .back-link:hover{color:var(--purple)}
+  .band h2{text-align:center;font-size:clamp(1.8rem,4vw,2.5rem);color:var(--purple-dark);margin:4px 0 8px}
+  #page-lessons .kicker,#page-lessons h2,#page-booking .kicker,#page-booking h2{color:var(--logo-navy)}
+  .band .lead{text-align:center;max-width:680px;margin:0 auto 40px;font-size:1.05rem;line-height:1.6}
+
+  /* ---------- ABOUT ---------- */
+  .bio-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px}
+  .bio{background:#fff;border-radius:var(--radius);box-shadow:var(--shadow);padding:32px;
+       border:4px solid #556B2F;text-align:center}
+  .bio .avatar{width:96px;height:96px;border-radius:50%;margin:0 auto 14px;display:flex;align-items:center;
+       justify-content:center;font-size:2.6rem;background:linear-gradient(135deg,var(--lavender-light),var(--lav-deep))}
+  .bio h3{color:var(--lavender-text);font-size:1.4rem}
+  .bio .role{color:var(--teal-dark);font-weight:700;font-size:.92rem;margin:2px 0 12px}
+  .bio p{line-height:1.6;font-size:.98rem}
+  .contact-strip{margin-top:34px;background:#fff;border-radius:var(--radius);box-shadow:var(--shadow);
+       padding:26px;display:flex;gap:26px;justify-content:center;flex-wrap:wrap;align-items:center}
+  .contact-strip .item{font-weight:700;font-size:1.05rem}
+  .contact-strip .item span{margin-right:8px}
+
+  /* ---------- TRAINING ---------- */
+  .gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:22px}
+  .gcard{background:#fff;border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden;
+         display:flex;flex-direction:column}
+  .gcard .thumb{aspect-ratio:4/3;background:linear-gradient(135deg,var(--lav-deep),var(--lavender-light));
+       display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+  .gcard .thumb img{width:100%;height:100%;object-fit:cover;object-position:top}
+  .gcard .thumb .ph{position:absolute;inset:0;display:flex;flex-direction:column;gap:6px;align-items:center;
+       justify-content:center;font-family:'Montserrat',sans-serif;font-weight:700;color:var(--purple-dark);
+       text-align:center;padding:12px;font-size:1.05rem}
+  .gcard .thumb .ph small{font-family:'Montserrat',sans-serif;font-weight:600;color:var(--ink);opacity:.7}
+  .gcard .body{padding:18px;display:flex;flex-direction:column;gap:10px;flex:1}
+  .gcard h3{font-size:1.08rem;color:var(--purple-dark)}
+  .gcard p{font-size:.9rem;line-height:1.45;flex:1}
+  .gcard .row{display:flex;gap:8px}
+  .gcard .btn{padding:8px 16px;font-size:.88rem;flex:1}
+
+  /* ---------- PRICING ---------- */
+  .price-grid{display:grid;grid-template-columns:minmax(0,1fr);gap:22px}
+  @media(min-width:640px){.price-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+  #page-lessons .band-inner{max-width:1360px}
+  @media(min-width:900px){
+    #page-lessons .price-grid{grid-template-columns:repeat(4,minmax(0,1fr));max-width:1200px;margin:0 auto}
+    #page-host-event .price-grid{grid-template-columns:minmax(0,1fr)}
+  }
+  .pcard{background:#fff;border-radius:var(--radius);box-shadow:var(--shadow);padding:28px 24px;
+         display:flex;flex-direction:column;border-top:8px solid var(--purple);position:relative;text-align:center}
+  .pcard.lavender{border-top-color:var(--turquoise)} .pcard.teal{border-top-color:var(--teal-dark)}
+  .pcard.olive{border-top-color:var(--olive)}
+  .pcard.new .tag{background:var(--olive)}
+  .pcard .tag{position:absolute;top:-14px;right:14px;background:var(--teal-dark);color:#fff;
+       font-family:'Montserrat',sans-serif;font-weight:700;font-size:.8rem;padding:4px 14px;border-radius:999px}
+  .pcard .icon-badge{width:58px;height:58px;border-radius:50%;margin:0 auto 14px;
+       border:3px solid var(--purple);box-shadow:var(--shadow);background-size:cover;background-position:center}
+  .pcard.olive .icon-badge{border-color:var(--olive)}
+  .pcard.teal .icon-badge{border-color:var(--teal-dark)}
+  .pcard.lavender .icon-badge{border-color:var(--lavender)}
+  .pcard .card-top{min-height:200px}
+  .pcard .price-heading{min-height:82px}
+  .pcard h3{color:var(--purple-dark);font-size:1.2rem;margin-bottom:2px}
+  .pcard .who{font-size:.88rem;color:var(--teal-dark);font-weight:700;margin-bottom:12px}
+  .pcard .desc{font-size:.88rem;line-height:1.45;opacity:.85;margin-bottom:14px}
+  .pcard .divider{border-top:3px dashed var(--slate-blue);opacity:.85;margin:6px 0 18px}
+  .pcard .price{font-family:'Montserrat',sans-serif;font-size:2.4rem;font-weight:800;color:var(--lavender-text)}
+  .pcard.group .price{color:var(--purple)}
+  .pcard.olive .price{color:var(--olive-dark)}
+  .pcard.teal .price{color:var(--teal-dark)}
+  .pcard .per{font-size:.85rem;font-weight:600;margin-bottom:6px}
+  .pcard .commit{font-size:.82rem;font-weight:700;background:var(--purple);color:#fff;border-radius:999px;
+       padding:5px 14px;display:inline-block;margin-bottom:14px;margin-top:auto;align-self:center}
+  .pcard.olive .commit{background:var(--olive)}
+  .pcard.teal .commit{background:var(--teal-dark)}
+  .pcard .includes-label{font-style:italic;font-weight:700;font-size:.85rem;color:var(--purple-dark);
+       text-align:left;margin-bottom:8px}
+  .pcard .price-block{min-height:120px;display:flex;flex-direction:column}
+  .pcard ul{list-style:none;font-size:.92rem;line-height:1.5;min-height:186px;margin-bottom:16px;text-align:left}
+  .pcard ul li{padding-left:22px;position:relative;margin-bottom:6px}
+  .pcard ul li::before{content:"♥︎";position:absolute;left:0;color:var(--slate-blue)}
+  .pcard .total{font-weight:700;font-size:.9rem;color:var(--purple-dark);margin-bottom:14px;min-height:38px}
+  .price-grid .pcard>.btn{width:100%;min-height:52px;display:flex;align-items:center;justify-content:center;
+       text-align:center;box-sizing:border-box;margin-top:auto;padding:14px 18px;font-size:1rem;line-height:1.25}
+
+  /* ---------- BOOKING ---------- */
+  .book-wrap{max-width:760px;margin:0 auto}
+  .class-card{background:#fff;border-radius:var(--radius);box-shadow:var(--shadow);padding:20px 24px;
+       display:flex;align-items:center;gap:18px;margin-bottom:16px;flex-wrap:wrap}
+  .datebox{background:var(--lav-deep);border-radius:14px;text-align:center;padding:10px 16px;min-width:84px}
+  .datebox .mo{font-family:'Montserrat',sans-serif;font-weight:800;color:var(--lavender-text);font-size:.85rem;text-transform:uppercase}
+  .datebox .day{font-family:'Montserrat',sans-serif;font-weight:800;font-size:1.7rem;color:var(--purple-dark);line-height:1}
+  .class-card .info{flex:1;min-width:180px}
+  .class-card h3{font-size:1.1rem;color:var(--purple-dark)}
+  .class-card .meta{font-size:.88rem;font-weight:600;color:var(--teal-dark)}
+  .class-card .spots{font-size:.82rem;font-weight:700;color:var(--lavender-text)}
+  .class-card .price-chip{font-family:'Montserrat',sans-serif;font-weight:800;color:var(--purple-dark);font-size:1.15rem}
+
+  /* ---------- VIEW TOGGLE ---------- */
+  .view-toggle{display:flex;gap:8px;justify-content:center;margin-bottom:22px}
+  .view-toggle button{font-family:'Montserrat',sans-serif;font-weight:700;font-size:.92rem;cursor:pointer;
+       border:2px solid var(--purple);background:#fff;color:var(--purple);border-radius:999px;padding:8px 20px;transition:.2s}
+  .view-toggle button.on{background:var(--logo-navy);color:#fff}
+
+  /* ---------- CALENDAR ---------- */
+  .cal-wrap{background:#fff;border-radius:var(--radius);box-shadow:var(--shadow);padding:22px 22px 26px}
+  .cal-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
+  .cal-head h3{color:var(--logo-navy);font-size:1.2rem}
+  .cal-nav{display:flex;gap:10px}
+  .cal-nav button{border:none;background:var(--lav-deep);color:var(--logo-navy);width:32px;height:32px;
+       border-radius:50%;cursor:pointer;font-family:'Montserrat',sans-serif;font-weight:800;font-size:1rem}
+  .cal-nav button:hover{background:var(--purple-light)}
+  .cal-grid{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:6px}
+  .cal-dow{text-align:center;font-size:.78rem;font-weight:700;color:var(--teal-dark);
+       text-transform:uppercase;padding-bottom:4px}
+  .cal-cell{min-height:64px;min-width:0;border-radius:12px;padding:6px;background:var(--lav);position:relative}
+  .cal-cell.empty{background:transparent}
+  .cal-cell .num{font-family:'Montserrat',sans-serif;font-weight:700;font-size:.85rem;color:var(--ink);opacity:.55}
+  .cal-cell.has-class .num{opacity:1;color:var(--purple-dark)}
+  .cal-day-btn{display:block;width:100%;text-align:left;border:none;background:var(--lavender);color:var(--purple-dark);
+       font-size:.68rem;font-weight:700;border-radius:7px;padding:3px 5px;margin-top:3px;cursor:pointer;
+       line-height:1.2;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .cal-day-btn:hover{background:#B49BCF}
+  .cal-day-btn.type-group{background:var(--purple);color:#fff}
+  .cal-day-btn.type-group:hover{background:#7440b5}
+  .cal-day-btn.type-play-in{background:var(--teal);color:#fff}
+  .cal-day-btn.type-play-in:hover{background:var(--teal-dark)}
+  .cal-day-btn.type-private{background:#556B2F;color:#fff}
+  .cal-day-btn.type-private:hover{background:#43551f}
+  .cal-day-btn.type-event{background:#648A9E;color:#fff}
+  .cal-day-btn.type-event:hover{background:#4f6f80}
+  .cal-day-btn.type-game{background:var(--turquoise-bright);color:#fff}
+  .cal-day-btn.type-game:hover{background:var(--turquoise)}
+  .cal-legend{display:flex;gap:16px;flex-wrap:wrap;justify-content:center;margin-top:16px;font-size:.8rem;font-weight:700}
+  .cal-legend .dot{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:5px;vertical-align:middle}
+
+  /* ---------- SHOP ---------- */
+  .shop-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:22px}
+  .shopcard{background:#fff;border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden;
+       display:flex;flex-direction:column}
+  .shopcard .thumb{aspect-ratio:1/1;background:linear-gradient(135deg,var(--lav-deep),var(--lavender-light));
+       display:flex;align-items:center;justify-content:center;overflow:hidden}
+  .shopcard .thumb img{width:100%;height:100%;object-fit:cover}
+  .shopcard .body{padding:18px;display:flex;flex-direction:column;gap:8px;flex:1}
+  .shopcard h3{font-size:1.05rem;color:var(--purple-dark)}
+  .shopcard p{font-size:.88rem;line-height:1.45;flex:1;opacity:.85}
+  .shopcard .price{font-family:'Montserrat',sans-serif;font-weight:800;font-size:1.3rem;color:var(--lavender-text)}
+  .shop-empty{background:#fff;border-radius:var(--radius);box-shadow:var(--shadow);padding:50px 24px;
+       text-align:center;max-width:520px;margin:0 auto}
+  .shop-empty .emoji{font-size:2.6rem;margin-bottom:10px}
+  .shop-empty h3{color:var(--purple-dark);margin-bottom:8px;font-size:1.3rem}
+  .shop-empty p{line-height:1.6}
+
+  /* booking modal */
+  .modal-bg{position:fixed;inset:0;background:rgba(60,42,85,.5);display:none;align-items:center;
+       justify-content:center;z-index:100;padding:16px}
+  .modal-bg.open{display:flex}
+  .modal{background:#fff;border-radius:var(--radius);max-width:480px;width:100%;max-height:92vh;
+       overflow-y:auto;padding:30px;position:relative}
+  .modal .close{position:absolute;top:12px;right:16px;background:none;border:none;font-size:1.5rem;
+       cursor:pointer;color:var(--purple)}
+  .modal h3{color:var(--purple-dark);margin-bottom:4px}
+  .modal .subtitle{font-size:.9rem;color:var(--teal-dark);font-weight:700;margin-bottom:18px}
+  .steps{display:flex;gap:6px;margin-bottom:20px}
+  .steps span{flex:1;height:6px;border-radius:99px;background:var(--lav-deep)}
+  .steps span.on{background:var(--lavender)}
+  .field{margin-bottom:14px}
+  .field label{display:block;font-weight:700;font-size:.88rem;margin-bottom:5px}
+  .field input{width:100%;padding:11px 14px;border:2px solid var(--lav-deep);border-radius:12px;
+       font-family:'Montserrat',sans-serif;font-size:.95rem;font-weight:600}
+  .field input:focus{outline:none;border-color:var(--purple)}
+  .check{display:flex;gap:10px;align-items:flex-start;background:var(--lav);border-radius:12px;
+       padding:12px 14px;margin:16px 0;font-size:.88rem;font-weight:600;line-height:1.4}
+  .check input{margin-top:2px;accent-color:var(--lavender-text);width:18px;height:18px}
+  .radio-row{display:flex;gap:16px;flex-wrap:wrap;margin-top:6px}
+  .radio-row label{display:flex;align-items:center;gap:6px;font-size:.9rem;font-weight:600;cursor:pointer}
+  .radio-row input{accent-color:var(--purple);width:17px;height:17px;margin:0}
+  .paynote{background:var(--lavender-light);border-radius:12px;padding:12px 14px;font-size:.85rem;
+       font-weight:600;margin-bottom:16px;line-height:1.45}
+  .cardrow{display:flex;gap:10px}
+  .cardrow .field{flex:1}
+  .confirm{text-align:center;padding:14px 0}
+  .confirm .big{font-size:3rem}
+  .confirm h3{margin:8px 0}
+  .confirm p{font-size:.95rem;line-height:1.55}
+  .err{color:#76528F;font-size:.85rem;font-weight:700;margin-bottom:10px;display:none}
+
+  /* subscribe strip */
+  .sub-strip{margin:28px auto 0;max-width:520px;background:linear-gradient(120deg,var(--purple-dark),var(--olive));
+       border-radius:16px;padding:14px 20px;text-align:center;color:#fff}
+  .sub-strip h3{font-size:1rem;margin-bottom:2px}
+  .sub-strip p{margin-bottom:10px;font-weight:500;font-size:.78rem}
+  .sub-strip form{display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
+  .sub-strip input,.sub-strip select{padding:7px 14px;border-radius:999px;border:none;min-width:130px;font-size:.85rem;
+       font-family:'Montserrat',sans-serif;font-weight:600;color:var(--ink)}
+  .sub-strip select{min-width:110px}
+  .sub-strip .btn{padding:7px 18px;font-size:.85rem}
+  .sub-strip .msg{margin-top:8px;font-weight:700;font-size:.82rem;display:none}
+
+  /* ---------- FOOTER ---------- */
+  footer{background:var(--teal-dark);color:#fff;text-align:center;padding:36px 5vw;margin-top:0;
+       border-top:6px solid #556B2F}
+  footer .footer-logo{width:92px;height:92px;border-radius:50%;margin:0 auto 12px;
+       border:3px solid rgba(255,255,255,.7);box-shadow:0 8px 24px rgba(0,0,0,.18);background:var(--logo-img) center/cover no-repeat}
+  footer .flogo{font-family:'Montserrat',sans-serif;font-weight:800;font-size:1.4rem}
+  footer .flogo .bam{color:#C9B6DE}.flogo .chicks{color:#8a9a5b}
+  footer .links{margin:12px 0;display:flex;gap:22px;justify-content:center;flex-wrap:wrap;font-weight:600}
+  footer .links-social{margin-top:0}
+  footer .links-social a{color:var(--turquoise-bright)}
+  footer a{color:#e5d5ff}
+  footer .fine{font-size:.8rem;opacity:.75;margin-top:10px;line-height:1.5}
+  footer .fine a{color:#e5d5ff;opacity:.9;text-decoration:underline}
+
+  @media(max-width:640px){
+    .navlinks{gap:12px;font-size:.9rem}
+    .nav-book{display:none}
+    /* 3 primary home cards: stack full-width on phones, same as everything else */
+    /* Keep the month grid inside the viewport on small screens */
+    .cal-wrap{padding:14px 12px 18px}
+    .cal-grid{gap:3px}
+    .cal-cell{min-height:52px;padding:4px;border-radius:9px}
+    .cal-dow{font-size:.62rem;padding-bottom:2px}
+    .cal-cell .num{font-size:.72rem}
+    .cal-day-btn{font-size:.58rem;padding:2px 3px;border-radius:5px}
+    .cal-legend{gap:10px;font-size:.72rem}
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ NAV ============ -->
+<nav>
+  <a class="brand" href="#/">
+    <div class="brand-mark" role="img" aria-label="2 BAM BIRDS original logo"></div>
+    <span>2 <span class="bam">BAM</span> <span class="chicks">BIRDS</span></span>
+  </a>
+  <div class="navlinks">
+    <a href="#/about">About Us</a>
+    <a href="javascript:void(0)" onclick="openSubFlow()">Find a Sub</a>
+    <a href="#/booking">Calendar</a>
+    <a href="#/pricing">Pricing</a>
+    <a class="btn btn-olive nav-book" href="#/book">Book Now</a>
+  </div>
+</nav>
+
+<!-- ============ HOME PAGE ============ -->
+<div class="page" id="page-home">
+<header class="hero" id="home">
+  <img src="assets/img/peacock-wallpaper.jpg" alt="" aria-hidden="true"
+       style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 38%;z-index:0">
+  <div style="position:absolute;inset:0;background:linear-gradient(rgba(247,243,234,.55),rgba(247,243,234,.72));z-index:0"></div>
+  <div class="hero-inner" style="position:relative;z-index:1">
+    <div class="hero-tile" role="img" aria-label="2 BAM BIRDS original logo tile"></div>
+    <div class="hero-text">
+      <div style="font-family:'Montserrat',sans-serif;font-weight:800;margin-bottom:18px;text-align:center">
+        <div style="white-space:nowrap;font-size:clamp(1.15rem,6.2vw,2.1rem)"><span style="color:var(--logo-navy)">Learn</span> <span class="purple-dot">●</span> <span style="color:var(--logo-navy)">Play</span> <span class="purple-dot">●</span> <span style="color:var(--logo-navy)">Connect</span></div>
+        <div style="white-space:nowrap;color:var(--logo-navy);font-size:clamp(1.15rem,6.5vw,2.35rem);line-height:1.15;letter-spacing:.03em;margin-top:8px">American <span style="color:var(--purple)">Mahjong</span></div>
+        <div style="white-space:nowrap;color:var(--logo-navy);font-size:clamp(1.15rem,6.5vw,2.35rem);line-height:1.15;letter-spacing:.03em;margin-top:4px">with US!</div>
+      </div>
+      <p class="sub">New to the tiles or already hooked? Come learn the game, sharpen your
+         skills, meet fellow players, or join in the fun — there's a seat at the table for
+         everyone.</p>
+      <div class="cta-row">
+        <a href="https://www.instagram.com/2bambirds" target="_blank" rel="noopener" class="ig-follow-btn">
+          <span style="font-size:1.2rem">📸</span> Follow us on Instagram
+        </a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- 3 full-width color sections: Learn / Events / Play — tap to slide away and reveal each section's menu -->
+<div class="mega-link mega-learn" style="padding:0;background-color:var(--purple)">
+  <div class="mega-stack" style="max-width:none">
+    <div class="mega-split-front">
+      <div class="mega-textpane" onclick="toggleMegaReveal(this)">
+        <div class="emoji">🀄</div>
+        <h2 style="margin:6px 0 14px">Learn</h2>
+        <p style="max-width:none;margin:0 0 26px">New to the game, or brushing up? We've got a lesson for you.</p>
+        <div class="mega-tap-cue">Tap to explore →</div>
+      </div>
+      <div class="mega-photopane">
+        <img src="assets/img/learn-band-photo.jpg" alt="">
+        <div class="mega-photo-tint" style="background:rgba(91,45,130,.38)"></div>
+      </div>
+    </div>
+    <div class="mega-back">
+      <div class="mega-reveal-grid">
+        <a href="#/lessons"><div class="emoji">🀄</div><h4>Find Your Perfect Lesson</h4><p>Group, Beginner, Instructor Play-In, Private</p></a>
+        <a href="#/training"><div class="emoji">📖</div><h4>Training Material</h4><p>Cheat sheets &amp; strategy guides</p></a>
+        <a href="#/lesson-calendar"><div class="emoji">📅</div><h4>Lesson Calendar</h4><p>See upcoming class dates</p></a>
+      </div>
+      <div class="mega-back-btn" onclick="toggleMegaReveal(this)">‹ Back</div>
+    </div>
+  </div>
+</div>
+<div class="mega-link mega-events" style="padding:0;background-color:var(--turquoise-bright)">
+  <div class="mega-stack" style="max-width:none">
+    <div class="mega-split-front mega-split-reverse">
+      <div class="mega-textpane" onclick="toggleMegaReveal(this)">
+        <div class="emoji">🦚</div>
+        <h2 style="margin:6px 0 14px">Events</h2>
+        <p style="max-width:none;margin:0 0 26px">Join us for a Mahjong social at a fun location near you — or ask about hosting your own. Big or small, we have it covered.</p>
+        <div class="mega-tap-cue">Tap to explore →</div>
+      </div>
+      <div class="mega-photopane">
+        <img src="assets/img/events-band-photo.jpg" alt="">
+        <div class="mega-photo-tint" style="background:rgba(3,179,182,.42)"></div>
+      </div>
+    </div>
+    <div class="mega-back">
+      <div class="mega-reveal-grid">
+        <a href="#/upcoming-events"><div class="emoji">🦚</div><h4>Upcoming Events</h4><p>Socials at restaurants &amp; clubs</p></a>
+        <a href="#/host-event"><div class="emoji">🦆</div><h4>Host Your Own</h4><p>Corporate &amp; private inquiries</p></a>
+      </div>
+      <div class="mega-back-btn" onclick="toggleMegaReveal(this)">‹ Back</div>
+    </div>
+  </div>
+</div>
+<div class="mega-link mega-play" style="padding:0;background-color:var(--olive)">
+  <div class="mega-stack" style="max-width:none">
+    <div class="mega-split-front">
+      <div class="mega-textpane" onclick="toggleMegaReveal(this)">
+        <div class="emoji">🎲</div>
+        <h2 style="margin:6px 0 14px">Play</h2>
+        <p style="max-width:none;margin:0 0 26px">Looking for a game — or looking to fill a seat? Find your table here.</p>
+        <div class="mega-tap-cue">Tap to explore →</div>
+      </div>
+      <div class="mega-photopane">
+        <video autoplay muted loop playsinline preload="auto" poster="assets/img/play-band-photo.jpg">
+          <source src="assets/play-banner-v6.mp4" type="video/mp4">
+        </video>
+        <div class="mega-photo-tint" style="background:rgba(85,107,47,.38)"></div>
+      </div>
+    </div>
+    <div class="mega-back">
+      <div class="mega-reveal-grid">
+        <a href="javascript:void(0)" onclick="openSubFlow()"><div class="emoji">🦤</div><h4>Find a Game / Be a Sub</h4><p>Join a game or the sub list</p></a>
+        <a href="#/game-calendar"><div class="emoji">📅</div><h4>Game Calendar</h4><p>See scheduled games</p></a>
+      </div>
+      <div class="mega-back-btn" onclick="toggleMegaReveal(this)">‹ Back</div>
+    </div>
+  </div>
+</div>
+
+<!-- home page links to the 5 functionalities, grouped by priority -->
+<div class="features-wrap">
+  <div class="features-label second">Learn More</div>
+  <div class="features-secondary" style="max-width:520px;margin:0 auto">
+    <a class="fcard" href="#/booking" style="border-top-color:var(--logo-navy)">
+      <div class="emoji">📅</div>
+      <h3>Calendar</h3>
+      <p>See upcoming class dates and reserve your seat — just like booking any appointment.</p>
+    </a>
+    <a class="fcard c-olive" href="#/shop">
+      <div class="emoji">🛍️</div>
+      <h3>Shop</h3>
+      <p>Mahjong sets, accessories, and 2 BAM BIRDS merch — coming soon!</p>
+    </a>
+  </div>
+
+  <div class="sub-strip">
+    <h3>Get on Our List <span class="purple-dot">●</span></h3>
+    <p>Subscribe to receive new Class &amp; Event offerings.</p>
+    <form id="subFormHome">
+      <input type="text" id="subFirstHome" placeholder="First name" required>
+      <input type="text" id="subLastHome" placeholder="Last name" required>
+      <input type="email" id="subEmailHome" placeholder="your@email.com" required>
+      <select id="subLevelHome" required>
+        <option value="" disabled selected>Level</option>
+        <option value="New">New</option>
+        <option value="Beginner">Beginner</option>
+        <option value="Intermediate/Advanced">Int/Adv</option>
+      </select>
+      <button class="btn btn-lavender" type="submit">Subscribe</button>
+    </form>
+    <div class="msg" id="subMsgHome">You're on the list! We can't wait to play with you! ♥</div>
+  </div>
+</div>
+</div><!-- /page-home -->
+
+<!-- ============ ABOUT PAGE ============ -->
+<section class="band alt page" id="page-about">
+  <div class="band-inner">
+    <div class="kicker">Meet the Birds</div>
+    <h2>About Us</h2>
+    <p class="lead" style="font-family:'Montserrat',sans-serif;font-size:1.25rem;font-weight:800;color:var(--lavender-text);margin-bottom:24px">
+       From court partners to friends to business partners!</p>
+    <div class="bio" style="text-align:left;max-width:760px;margin:0 auto">
+      <img src="assets/img/about-bio-photo.jpg" alt="Susie and Joyce, the founders of 2 BAM BIRDS" loading="lazy"
+           style="width:220px;height:220px;object-fit:cover;object-position:center top;border-radius:50%;margin:0 auto 18px;display:block;box-shadow:var(--shadow)">
+      <p style="margin-bottom:14px;line-height:1.7">Joyce and Susie first met on the racquet courts and
+         quickly became close friends. Before co-founding 2 BAM BIRDS, Susie spent many years in the
+         finance industry, managing investments—and teams of analysts—at some of New York City's leading
+         hedge funds. Joyce built her career at Bloomberg in the Training &amp; Development department,
+         where she discovered her passion for teaching and helping others learn.</p>
+      <p style="margin-bottom:14px;line-height:1.7">Combining their professional backgrounds, love of
+         teaching, and shared passion for American Mahjong, they created 2 BAM BIRDS. Their goal is
+         simple: make learning mahjong approachable, engaging, and fun for everyone.</p>
+      <p style="line-height:1.7">Both Joyce and Susie are competitive by nature, but they never lose
+         sight of having a great time. When they're not teaching or playing mahjong, you'll almost
+         always find them with a racquet in their hands and a hat on their heads!</p>
+    </div>
+    <div class="contact-strip">
+      <div class="item"><span>📸</span>Instagram: <a href="https://www.instagram.com/2bambirds" target="_blank" rel="noopener">@2bambirds</a></div>
+      <div class="item"><span>✉️</span><a href="mailto:2BAMbirds@gmail.com">2BAMbirds@gmail.com</a></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ LEARN HUB (Level 2) ============ -->
+<section class="band page" id="page-learn">
+  <div class="band-inner">
+    <div class="kicker">Learn</div>
+    <h2>New to the game, or brushing up?</h2>
+    <p class="lead">We've got a lesson for you.</p>
+    <div class="features-secondary">
+      <a class="fcard" href="#/lessons" style="border-top-color:var(--logo-navy)">
+        <div class="emoji">🀄</div>
+        <h3>Find Your Perfect Lesson</h3>
+        <p>Group, Beginner Essentials, Instructor Play-In, and Private lessons.</p>
+      </a>
+      <a class="fcard c-lav" href="#/training">
+        <div class="emoji">
+          <svg width="40" height="48" viewBox="0 0 40 48" style="vertical-align:middle">
+            <rect x="1.5" y="1.5" width="37" height="45" rx="7" fill="#fdfcff" stroke="#188a8a" stroke-width="2.5"/>
+            <rect x="9" y="10" width="5.5" height="28" rx="2.5" fill="#2ab3b3"/>
+            <rect x="17.25" y="10" width="5.5" height="28" rx="2.5" fill="#2ab3b3"/>
+            <rect x="25.5" y="10" width="5.5" height="28" rx="2.5" fill="#2ab3b3"/>
+          </svg>
+        </div>
+        <h3>Training Material</h3>
+        <p>Cheat sheets, Charleston strategy, joker rules and more.</p>
+      </a>
+      <a class="fcard" href="#/lesson-calendar" style="border-top-color:var(--logo-navy)">
+        <div class="emoji">📅</div>
+        <h3>Lesson Calendar</h3>
+        <p>See upcoming class dates and reserve your seat.</p>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PLAY HUB (Level 2) ============ -->
+<section class="band page" id="page-play">
+  <div class="band-inner">
+    <div class="kicker">Play</div>
+    <h2>Find a game and become a 2 BAM BIRDS sub</h2>
+    <p class="lead">Looking for a game — or looking to fill a seat? Find your table here.</p>
+    <div class="features-secondary">
+      <a class="fcard" href="javascript:void(0)" onclick="openSubFlow()" style="border-top-color:var(--turquoise-bright)">
+        <div class="about-card-logo" role="img" aria-label="Dodo bird">🦤</div>
+        <h3>Find a Game / Be a Sub</h3>
+        <p>Join a game near you, or join the sub list to fill in for others.</p>
+      </a>
+      <a class="fcard" href="#/game-calendar" style="border-top-color:var(--logo-navy)">
+        <div class="emoji">📅</div>
+        <h3>Game Calendar</h3>
+        <p>See scheduled games looking for players.</p>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ EVENTS HUB (Level 2) ============ -->
+<section class="band page" id="page-events">
+  <div class="band-inner">
+    <div class="kicker">Events</div>
+    <h2>Join us for a Mahjong social</h2>
+    <p class="lead">At a fun location near you — or ask about hosting your own. Big or small, we have it covered.</p>
+    <div class="features-secondary">
+      <a class="fcard" href="#/upcoming-events" style="border-top-color:var(--turquoise-bright)">
+        <div class="emoji">🦚</div>
+        <h3>Upcoming Events</h3>
+        <p>Socials at restaurants, country clubs, and other fun spots.</p>
+      </a>
+      <a class="fcard" href="#/host-event" style="border-top-color:var(--logo-navy)">
+        <div class="emoji">🦆</div>
+        <h3>Host Your Own</h3>
+        <p>Corporate teams, clubs, private parties, and social groups.</p>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TRAINING ============ -->
+<section class="band page" id="page-training">
+  <div class="band-inner">
+    <a class="back-link" href="#/learn">← Back to Learn</a>
+    <div class="kicker">Study Up</div>
+    <h2>Training Material</h2>
+    <p class="lead">Our guides for playing your best on the 2026 NMJL card. Click any guide to view it
+       full size, or download it as a PDF to print and keep at the table.</p>
+    <div class="gallery" id="gallery"></div>
+  </div>
+</section>
+
+<!-- ============ LESSON CALENDAR (Level 3, via Learn hub) ============ -->
+<section class="band page" id="page-lesson-calendar">
+  <div class="band-inner book-wrap">
+    <a class="back-link" href="#/learn">← Back to Learn</a>
+    <div class="kicker">Learn</div>
+    <h2>Lesson Calendar</h2>
+    <p class="lead">Browse upcoming Group, Beginner, Instructor Play-In, and Private lessons below. Head to
+       <a href="#/lessons" style="color:var(--lavender-text);font-weight:700">Find Your Perfect Lesson</a>
+       to reserve your spot!</p>
+
+    <div class="view-toggle">
+      <button id="lessonViewListBtn" aria-pressed="false" onclick="lessonCal.setView('list')">📋 List View</button>
+      <button id="lessonViewCalBtn" class="on" aria-pressed="true" onclick="lessonCal.setView('calendar')">📅 Calendar View</button>
+    </div>
+
+    <div id="lessonClassList" style="display:none"></div>
+    <div id="lessonCalendarView">
+      <div class="cal-wrap">
+        <div class="cal-head">
+          <div class="cal-nav"><button onclick="lessonCal.shift(-1)">‹</button></div>
+          <h3 id="lessonCalLabel"></h3>
+          <div class="cal-nav"><button onclick="lessonCal.shift(1)">›</button></div>
+        </div>
+        <div class="cal-grid" id="lessonCalGrid"></div>
+        <div class="cal-legend">
+          <span><span class="dot" style="background:var(--lavender)"></span>Beginner</span>
+          <span><span class="dot" style="background:var(--purple)"></span>Group</span>
+          <span><span class="dot" style="background:var(--teal)"></span>Instructor Play-In</span>
+          <span><span class="dot" style="background:#556B2F"></span>Private</span>
+        </div>
+      </div>
+    </div>
+
+    <p style="text-align:center;margin-top:30px">
+      <a class="btn btn-lavender" href="#/lessons">See Pricing &amp; Book →</a>
+    </p>
+  </div>
+</section>
+
+<!-- ============ GAME CALENDAR (Level 3, via Play hub) ============ -->
+<section class="band page" id="page-game-calendar">
+  <div class="band-inner book-wrap">
+    <a class="back-link" href="#/play">← Back to Play</a>
+    <div class="kicker">Play</div>
+    <h2>Game Calendar</h2>
+    <p class="lead">Scheduled games looking for players. Head to
+       <a href="javascript:void(0)" onclick="openSubFlow()" style="color:var(--lavender-text);font-weight:700">Find a Game / Be a Sub</a>
+       to join in!</p>
+
+    <div class="view-toggle">
+      <button id="gameViewListBtn" aria-pressed="false" onclick="gameCal.setView('list')">📋 List View</button>
+      <button id="gameViewCalBtn" class="on" aria-pressed="true" onclick="gameCal.setView('calendar')">📅 Calendar View</button>
+    </div>
+
+    <div id="gameClassList" style="display:none"></div>
+    <div id="gameCalendarView">
+      <div class="cal-wrap">
+        <div class="cal-head">
+          <div class="cal-nav"><button onclick="gameCal.shift(-1)">‹</button></div>
+          <h3 id="gameCalLabel"></h3>
+          <div class="cal-nav"><button onclick="gameCal.shift(1)">›</button></div>
+        </div>
+        <div class="cal-grid" id="gameCalGrid"></div>
+        <div class="cal-legend">
+          <span><span class="dot" style="background:var(--turquoise-bright)"></span>Game Play</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ UPCOMING EVENTS (Level 3, via Events hub) ============
+     Placeholder until events are wired to their own data source (a
+     spreadsheet row per event, with a flyer image/PDF link column —
+     see chat notes). For now this just shows a friendly empty state. -->
+<section class="band page" id="page-upcoming-events">
+  <div class="band-inner book-wrap">
+    <a class="back-link" href="#/events">← Back to Events</a>
+    <div class="kicker">Events</div>
+    <h2>Upcoming Events</h2>
+    <p class="lead">Mahjong socials at restaurants, country clubs, and other fun spots — added as they're scheduled.</p>
+    <p style="text-align:center;font-weight:600;padding:20px">
+      No events posted right now — follow
+      <a href="https://www.instagram.com/2bambirds" target="_blank" rel="noopener">@2bambirds</a>
+      on Instagram or subscribe below to hear about the next one! <span class="purple-dot">●</span></p>
+    <p style="text-align:center;margin-top:10px">
+      <a class="btn btn-turquoise" href="https://www.instagram.com/2bambirds" target="_blank" rel="noopener">📸 Follow @2bambirds</a>
+    </p>
+  </div>
+</section>
+
+<!-- ============ BOOK 2BAM (compact checkout chooser) ============ -->
+<section class="band page" id="page-book">
+  <div class="band-inner">
+    <div class="kicker">Book Now</div>
+    <h2>What are you booking?</h2>
+    <p class="lead">Pick a lesson type to check out right away, or head to Events for socials and hosting inquiries.
+       Want the full details on lessons first? <a href="#/lessons" style="color:var(--lavender-text);font-weight:700">See full pricing →</a></p>
+    <div class="price-grid" style="grid-template-columns:repeat(auto-fit,minmax(230px,1fr));max-width:1200px;margin:0 auto">
+      <div class="pcard" style="border-top-color:var(--purple)">
+        <div class="card-top">
+          <div class="price-heading"><h3>Group</h3></div>
+        </div>
+        <div class="price-block">
+          <div class="price">$50*</div>
+          <div class="per">per person, per session</div>
+        </div>
+        <a class="btn btn-purple" href="javascript:void(0)" onclick="openBookFlow('group')">Book Group</a>
+      </div>
+      <div class="pcard" style="border-top-color:var(--olive)">
+        <div class="card-top">
+          <div class="price-heading"><h3>Beginner Essentials</h3></div>
+        </div>
+        <div class="price-block">
+          <div class="price">$65*</div>
+          <div class="per">per person, per session</div>
+        </div>
+        <a class="btn btn-olive" href="javascript:void(0)" onclick="openBookFlow('beginner')">Book Beginner Essentials</a>
+      </div>
+      <div class="pcard" style="border-top-color:var(--teal-dark)">
+        <div class="card-top">
+          <div class="price-heading"><h3>Instructor Play-In</h3></div>
+        </div>
+        <div class="price-block">
+          <div class="price">$200</div>
+          <div class="per">per session</div>
+        </div>
+        <a class="btn btn-teal" href="javascript:void(0)" onclick="openBookFlow('playin')">Book Instructor Play-In</a>
+      </div>
+    </div>
+    <div class="price-grid" style="grid-template-columns:repeat(auto-fit,minmax(230px,1fr));max-width:560px;margin:22px auto 0">
+      <div class="pcard" style="border-top-color:var(--lavender)">
+        <div class="card-top">
+          <div class="price-heading"><h3>Privates</h3></div>
+        </div>
+        <div class="price-block">
+          <div class="per" style="margin-bottom:2px">Starting at</div>
+          <div class="price">$100</div>
+          <div class="per">per 90 minutes</div>
+        </div>
+        <a class="btn btn-turquoise" href="mailto:2BAMbirds@gmail.com">Email to Book</a>
+      </div>
+      <div class="pcard" style="border-top-color:var(--turquoise-bright)">
+        <div class="card-top">
+          <div class="price-heading"><h3>Events</h3></div>
+        </div>
+        <div class="price-block">
+          <p style="font-size:.9rem;line-height:1.5;margin:0">Socials, or host your own</p>
+        </div>
+        <a class="btn btn-turquoise" href="#/events">See Events</a>
+      </div>
+    </div>
+    <p style="text-align:center;font-size:.8rem;opacity:.75;margin-top:20px">*Price can vary per person based on how many players are in your group.</p>
+  </div>
+</section>
+
+<!-- ============ PRICING ============ -->
+<section class="band alt page" id="page-lessons">
+  <div class="band-inner">
+    <a class="back-link" href="#/learn">← Back to Learn</a>
+    <div class="kicker">Lessons &amp; Pricing</div>
+    <h2>Find Your Perfect Lesson</h2>
+    <p class="lead">Lessons available at your home, club, or designated location. Daytime and evening
+       sessions available. Group sizes and scheduling subject to availability.</p>
+    <div class="price-grid">
+      <div class="pcard group">
+        <div class="icon-badge" style="background-image:none;font-size:1.6rem;display:flex;align-items:center;justify-content:center">🦚</div>
+        <div class="card-top">
+          <div class="price-heading">
+            <h3>Group Lessons</h3>
+            <div class="who">3-8 players</div>
+          </div>
+          <p class="desc">Perfect for friends, neighbors, clubs, and social groups.</p>
+        </div>
+        <div class="divider"></div>
+        <div class="price-block">
+          <div class="price">$50*</div>
+          <div class="per">per person, per 2-hour session</div>
+          <div class="commit">4-session series required</div>
+        </div>
+        <div class="divider"></div>
+        <div class="includes-label">Includes:</div>
+        <ul>
+          <li>Mahjong fundamentals</li>
+          <li>Tile identification &amp; Charleston strategy</li>
+          <li>Reading the card</li>
+          <li>Hand selection and game strategy</li>
+          <li>Guided practice play</li>
+        </ul>
+        <div class="divider"></div>
+        <div class="total">Total cost: $200* per person for the complete 4-session series</div>
+        <a class="btn btn-purple" href="#" id="payGroupBtn">Book Group — $200</a>
+      </div>
+      <div class="pcard olive new">
+        <div class="tag">NEW!</div>
+        <div class="icon-badge" style="border-color:var(--olive);background-image:none;font-size:1.6rem;display:flex;align-items:center;justify-content:center">🦜</div>
+        <div class="card-top">
+          <div class="price-heading">
+            <h3>Beginner Essentials Program</h3>
+            <div class="who">3-8 players</div>
+          </div>
+          <p class="desc">Cover the basics with confidence!</p>
+        </div>
+        <div class="divider"></div>
+        <div class="price-block">
+          <div class="price">$65*</div>
+          <div class="per">per person, per 2-hour session</div>
+          <div class="commit">Two 2-hour sessions</div>
+        </div>
+        <div class="divider"></div>
+        <div class="includes-label">Includes:</div>
+        <ul>
+          <li>Tiles and their meanings</li>
+          <li>The Charleston</li>
+          <li>Dealer responsibilities</li>
+          <li>Game setup and flow</li>
+          <li>How to recognize a Mahjong hand</li>
+        </ul>
+        <div class="divider"></div>
+        <div class="total">Total cost: $130* per person for the complete 2-session program</div>
+        <p style="font-size:.78rem;font-style:italic;opacity:.75;margin:0 0 14px">
+          Does not include advanced strategy / tactics or shadow / companion play.</p>
+        <a class="btn btn-olive" href="#" id="payBeginnerBtn">Book BE - $130</a>
+      </div>
+      <div class="pcard teal">
+        <div class="icon-badge" style="border-color:var(--teal-dark);background-image:none;font-size:1.6rem;display:flex;align-items:center;justify-content:center">🦉</div>
+        <div class="card-top">
+          <div class="price-heading">
+            <h3>Instructor Play-In</h3>
+            <div class="who">3-6 players</div>
+          </div>
+          <p class="desc">Already know the basics and want guided practice with an instructor as your 4th?</p>
+        </div>
+        <div class="divider"></div>
+        <div class="price-block">
+          <div class="price">$200</div>
+          <div class="per">per 2-hour session</div>
+          <div class="commit">Must have min. 3 players</div>
+        </div>
+        <div class="divider"></div>
+        <div class="includes-label">Includes:</div>
+        <ul>
+          <li>Instructional play as needed</li>
+          <li>Strategy tips and coaching</li>
+          <li>Rules clarification</li>
+          <li>Hand selection guidance</li>
+        </ul>
+        <div class="divider"></div>
+        <div class="total">Practice more. Improve faster. Have fun!</div>
+        <a class="btn btn-teal" href="#" id="payPlayinBtn">Book Play-In — $200</a>
+      </div>
+      <div class="pcard lavender">
+        <div class="icon-badge" style="border-color:var(--lavender);background-image:none;font-size:1.6rem;display:flex;align-items:center;justify-content:center">🕊️</div>
+        <div class="card-top">
+          <div class="price-heading">
+            <h3>Privates or Semi-Privates</h3>
+            <div class="who" style="font-style:italic">For players already signed up for a lessons package</div>
+          </div>
+          <p class="desc">Personalized instruction tailored to your experience level and learning pace.</p>
+        </div>
+        <div class="divider"></div>
+        <div class="price-block">
+          <div class="per" style="margin-bottom:2px">Pricing begins at</div>
+          <div class="price">$100</div>
+          <div class="per">per 90 minutes</div>
+        </div>
+        <div class="divider"></div>
+        <div class="includes-label">Includes:</div>
+        <ul>
+          <li>Customized instruction</li>
+          <li>Individual coaching and strategy</li>
+          <li>Focused gameplay and skill development</li>
+          <li>Flexible pacing based on player experience</li>
+        </ul>
+        <div class="divider"></div>
+        <div class="total">Packages available. Ask for details!</div>
+        <a class="btn btn-turquoise" href="mailto:2BAMbirds@gmail.com">2BAMbirds@gmail.com</a>
+      </div>
+    </div>
+
+    <p style="text-align:center;margin-top:30px">
+   <a class="btn btn-outline" href="assets/pricing-sheet.pdf" download="2-BAM-BIRDS-Pricing-Sheet.pdf">⬇ Download the Full Pricing Sheet</a>
+    </p>
+    <p style="text-align:center;font-size:.8rem;opacity:.75;margin-top:16px">*Price can vary per person based on how many players are in your group.</p>
+  </div>
+</section>
+
+<!-- ============ HOST YOUR OWN EVENT (Level 3, via Events hub) ============ -->
+<section class="band alt page" id="page-host-event">
+  <div class="band-inner">
+    <a class="back-link" href="#/events">← Back to Events</a>
+    <div class="kicker">Events</div>
+    <h2>Host Your Own Event</h2>
+    <p class="lead">Bring the fun of Mahjong to your next gathering — corporate teams, clubs, private parties, and social groups.</p>
+    <div class="price-grid" style="max-width:420px;margin:0 auto">
+      <div class="pcard" style="border-top-color:var(--turquoise-bright)">
+        <div class="icon-badge" style="border-color:var(--turquoise-bright);background-image:none;font-size:1.6rem;display:flex;align-items:center;justify-content:center">🦆</div>
+        <div class="card-top">
+          <div class="price-heading">
+            <h3>Events</h3>
+            <div class="who">Private &amp; corporate</div>
+          </div>
+          <p class="desc">Bring the fun of Mahjong to your next gathering — corporate teams, clubs, private parties, and social groups.</p>
+        </div>
+        <div class="divider"></div>
+        <div class="price-block">
+          <p style="font-size:.92rem;line-height:1.5;margin:0">Looking for something ongoing? We can design a weekly class series in your organization's space.</p>
+        </div>
+        <div class="divider"></div>
+        <div class="includes-label">Perfect for:</div>
+        <ul>
+          <li>Corporate team building</li>
+          <li>Clubs &amp; social groups</li>
+          <li>Private parties</li>
+          <li>Ongoing weekly series</li>
+        </ul>
+        <div class="divider"></div>
+        <div class="total">Tell us what you have in mind!</div>
+        <a class="btn btn-turquoise" href="mailto:2BAMbirds@gmail.com">2BAMbirds@gmail.com</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SHOP ============ -->
+<section class="band page" id="page-shop">
+  <div class="band-inner">
+    <div class="kicker">2 BAM BIRDS Merch</div>
+    <h2>Shop</h2>
+    <p class="lead">Mahjong sets, accessories, and 2 BAM BIRDS gear. Checkout is handled securely
+       through Stripe.</p>
+    <div class="shop-grid" id="shopGrid"></div>
+  </div>
+</section>
+
+<!-- ============ BOOKING (read-only schedule) ============ -->
+<section class="band page" id="page-booking">
+  <div class="band-inner book-wrap">
+    <div class="kicker">Classes &amp; Events</div>
+    <h2>Upcoming Classes &amp; Events</h2>
+    <p class="lead">Browse upcoming classes and events below. Head to
+       <a href="#/pricing" style="color:var(--lavender-text);font-weight:700">Booking &amp; Pricing</a>
+       to reserve your spot!</p>
+
+    <div class="view-toggle">
+      <button id="viewListBtn" aria-pressed="false" onclick="mainCal.setView('list')">📋 List View</button>
+      <button id="viewCalBtn" class="on" aria-pressed="true" onclick="mainCal.setView('calendar')">📅 Calendar View</button>
+    </div>
+
+    <div id="classList" style="display:none"></div>
+    <div id="calendarView">
+      <div class="cal-wrap">
+        <div class="cal-head">
+          <div class="cal-nav"><button onclick="mainCal.shift(-1)">‹</button></div>
+          <h3 id="calLabel"></h3>
+          <div class="cal-nav"><button onclick="mainCal.shift(1)">›</button></div>
+        </div>
+        <div class="cal-grid" id="calGrid"></div>
+        <div class="cal-legend">
+          <span><span class="dot" style="background:var(--lavender)"></span>Beginner</span>
+          <span><span class="dot" style="background:var(--purple)"></span>Group</span>
+          <span><span class="dot" style="background:var(--teal)"></span>Instructor Play-In</span>
+          <span><span class="dot" style="background:#556B2F"></span>Private</span>
+          <span><span class="dot" style="background:#648A9E"></span>Event</span>
+          <span><span class="dot" style="background:var(--turquoise-bright)"></span>Game Play</span>
+        </div>
+      </div>
+    </div>
+
+    <p style="text-align:center;margin-top:30px">
+      <a class="btn btn-lavender" href="#/pricing">See Pricing &amp; Book →</a>
+    </p>
+
+    <div class="sub-strip">
+      <h3>Get on Our List <span class="purple-dot">●</span></h3>
+      <p>Subscribe to receive new Class &amp; Event offerings.</p>
+      <form id="subForm">
+        <input type="text" id="subFirst" placeholder="First name" required>
+        <input type="text" id="subLast" placeholder="Last name" required>
+        <input type="email" id="subEmail" placeholder="your@email.com" required>
+        <select id="subLevel" required>
+          <option value="" disabled selected>Level</option>
+          <option value="New">New</option>
+          <option value="Beginner">Beginner</option>
+          <option value="Intermediate/Advanced">Int/Adv</option>
+        </select>
+        <button class="btn btn-lavender" type="submit">Subscribe</button>
+      </form>
+      <div class="msg" id="subMsg">You're on the list! We can't wait to play with you! ♥</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TRAINING PASSWORD GATE ============ -->
+<div class="modal-bg" id="pwGateBg">
+  <div class="modal" style="max-width:380px">
+    <button class="close" onclick="cancelGate()">✕</button>
+    <h3>🔒 Training Materials</h3>
+    <div class="subtitle">Enter the password to view our guides.</div>
+    <div class="err" id="pwErr" style="display:none">Incorrect password — please try again.</div>
+    <div class="field"><label for="pwInput">Password</label>
+      <input id="pwInput" type="password" placeholder="Enter password" onkeydown="if(event.key==='Enter')checkPassword()">
+    </div>
+    <button class="btn btn-lavender" style="width:100%" onclick="checkPassword()">Unlock</button>
+  </div>
+</div>
+
+<!-- ============ BOOKING FLOW MODAL (before Stripe checkout) ============ -->
+<div class="modal-bg" id="bookFlowBg">
+  <div class="modal" style="max-width:500px">
+    <button class="close" onclick="closeBookFlow()">✕</button>
+
+    <!-- Step 1: number of players -->
+    <div id="bfStep1">
+      <h3 id="bfTitle1">Book Now</h3>
+      <div class="subtitle" id="bfSubtitle1"></div>
+      <div class="field">
+        <label for="bfPlayers">Number of players</label>
+        <input id="bfPlayers" type="number" min="1" max="4">
+        <div id="bfOverMaxNote" style="display:none;font-size:.82rem;margin-top:6px;color:var(--teal-dark)">
+          Over 8? Email us at <a href="mailto:2BAMbirds@gmail.com">2BAMbirds@gmail.com</a></div>
+      </div>
+      <div class="err" id="bfErr1">Please enter a valid number of players for this package.</div>
+      <div class="paynote" id="bfPriceBox">
+        <div id="bfPricePerPerson"></div>
+        <div style="font-size:1.3rem;font-weight:800;margin-top:4px" id="bfTotal"></div>
+      </div>
+      <button class="btn btn-lavender" type="button" style="width:100%" onclick="bookFlowToStep2()">Continue →</button>
+    </div>
+
+    <!-- Step 2: confirm + contact info + sub-list opt-in -->
+    <div id="bfStep2" style="display:none">
+      <h3>Confirm &amp; book</h3>
+      <div class="paynote" style="margin-bottom:18px">
+        <div id="bfConfirmPackage" style="font-weight:800"></div>
+        <div id="bfConfirmPlayers"></div>
+        <div style="font-size:1.3rem;font-weight:800;margin-top:4px" id="bfConfirmTotal"></div>
+      </div>
+
+      <div class="err" id="bfErr2">Please fill in all required fields.</div>
+
+      <form id="bfForm">
+        <div class="subtitle">Your info</div>
+        <div class="cardrow">
+          <div class="field"><label for="bfFirst">First Name</label>
+            <input id="bfFirst" type="text" autocomplete="given-name" required></div>
+          <div class="field"><label for="bfLast">Last Name</label>
+            <input id="bfLast" type="text" autocomplete="family-name" required></div>
+        </div>
+        <div class="field"><label for="bfEmail">Email</label>
+          <input id="bfEmail" type="email" autocomplete="email" required></div>
+        <div class="field"><label for="bfPhone">Cell Phone</label>
+          <input id="bfPhone" type="tel" autocomplete="tel" required></div>
+
+        <div id="bfOthersWrap"></div>
+
+        <div class="field" style="display:flex;align-items:flex-start;gap:8px;margin-top:18px">
+          <input id="bfSublist" type="checkbox" style="width:auto;margin-top:3px">
+          <label for="bfSublist" style="font-weight:600;margin-bottom:0">
+            Add me to the sub list — email me when a group needs an extra player!</label>
+        </div>
+
+        <button class="btn btn-lavender" type="submit" style="width:100%;margin-top:8px" id="bfSubmitBtn">
+          Confirm &amp; Continue to Payment →</button>
+        <button class="btn btn-outline" type="button" style="width:100%;margin-top:8px" onclick="bookFlowToStep1()">← Back</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- ============ FIND A SUB MODAL ============ -->
+<div class="modal-bg" id="subFlowBg">
+  <div class="modal" style="max-width:480px">
+    <button class="close" onclick="closeSubFlow()" aria-label="Close">&times;</button>
+
+    <!-- Step 0: choose a path -->
+    <div id="subStepChoice">
+      <h3>Find a Sub <span class="purple-dot">●</span></h3>
+      <p class="subtitle">What do you need today?</p>
+      <div class="err" id="subChoiceErr"></div>
+      <button class="btn btn-turquoise" type="button" style="width:100%;margin-bottom:12px" onclick="subGoBecome()">
+        I want to become a sub</button>
+      <button class="btn btn-navy" type="button" style="width:100%" onclick="subGoNeed()">
+        I need a sub</button>
+      <p style="font-size:.82rem;margin-top:14px;line-height:1.5;color:var(--teal-dark)">
+        You'll need to become a sub first (agree to be contacted, and add your info)
+        before you can request one — that keeps the list a two-way street.</p>
+    </div>
+
+    <!-- Step 1: contact info + permission form -->
+    <div id="subStepContact" style="display:none">
+      <h3>Become a Sub <span class="purple-dot">●</span></h3>
+      <p style="line-height:1.55;margin-bottom:14px">
+        You will be contacted by subs@2bambirds.com based on the criteria entered
+        below. Keep an eye on your inbox so you don't miss playing opps!</p>
+      <form id="subContactForm">
+        <div class="cardrow">
+          <div class="field">
+            <label for="subFirstName">First Name</label>
+            <input type="text" id="subFirstName" required>
+          </div>
+          <div class="field">
+            <label for="subLastName">Last Name</label>
+            <input type="text" id="subLastName" required>
+          </div>
+        </div>
+        <div class="field">
+          <label for="subBecomeEmail">Email</label>
+          <input type="email" id="subBecomeEmail" required>
+        </div>
+        <div class="field">
+          <label for="subCell">Cell Phone <span style="font-weight:400;color:var(--teal-dark)">(optional)</span></label>
+          <input type="tel" id="subCell">
+        </div>
+        <div class="field">
+          <label for="subTown">Town you reside</label>
+          <input type="text" id="subTown">
+        </div>
+        <div class="field">
+          <label>Willing to sub in</label>
+          <div class="radio-row">
+            <label><input type="radio" name="subTownScope" value="own" checked> Your town only</label>
+            <label><input type="radio" name="subTownScope" value="all"> Include me in other towns</label>
+          </div>
+        </div>
+        <div class="field">
+          <label>Level</label>
+          <div class="radio-row">
+            <label><input type="radio" name="subLevel" value="Beginner"> Beginner</label>
+            <label><input type="radio" name="subLevel" value="Intermediate/Advanced"> Int/Adv</label>
+            <label><input type="radio" name="subLevel" value="All" checked> All</label>
+          </div>
+        </div>
+        <div class="check">
+          <input type="checkbox" id="subPermissionCheck">
+          <label for="subPermissionCheck" style="font-weight:600;margin-bottom:0">
+            Give me permission to be contacted for the <u>Sub List</u> — other players may
+            reach out when they need an extra player.</label>
+        </div>
+        <div class="check">
+          <input type="checkbox" id="subWantsEvents">
+          <label for="subWantsEvents" style="font-weight:600;margin-bottom:0">
+            Sign me up for <u>New Class &amp; Event</u> offerings.</label>
+        </div>
+        <div class="err" id="subContactErr"></div>
+        <button class="btn btn-lavender" type="submit" style="width:100%" id="subContactSubmitBtn">
+          Join →</button>
+        <button class="btn btn-outline" type="button" style="width:100%;margin-top:8px" onclick="subShowChoice()">← Back</button>
+      </form>
+    </div>
+
+    <!-- Step 3: became a sub confirmation -->
+    <div id="subStepBecameConfirm" style="display:none" class="confirm">
+      <div class="big">🦚</div>
+      <h3>You're on the list!</h3>
+      <p id="subBecameConfirmText">Thanks for becoming a sub. We'll reach out any time a group nearby needs an extra player.</p>
+      <button class="btn btn-turquoise" type="button" style="width:100%;margin-top:10px" onclick="subGoNeedAfterBecoming()">
+        I also need a sub right now →</button>
+      <button class="btn btn-outline" type="button" style="width:100%;margin-top:8px" onclick="closeSubFlow()">Done</button>
+    </div>
+
+    <!-- Step 4: need a sub form -->
+    <div id="subStepNeed" style="display:none">
+      <h3>Need a Sub <span class="purple-dot">●</span></h3>
+      <p class="subtitle">Requesting a sub generates an email from subs@2bambirds.com to
+        interested players that contains YOUR contact and game INFO only. The sub can
+        choose whether to reply back or not.</p>
+      <form id="subNeedForm">
+        <div class="field">
+          <label for="subNeedName">Your Name</label>
+          <input type="text" id="subNeedName" required>
+        </div>
+        <div class="field">
+          <label for="subNeedEmail">Your Email (must already be a registered sub)</label>
+          <input type="email" id="subNeedEmail" required>
+        </div>
+        <div class="field">
+          <label>How should interested subs contact you?</label>
+          <div class="radio-row">
+            <label><input type="radio" name="subNeedContactMethod" value="email" checked onchange="subUpdateNeedCellField()"> Email</label>
+            <label><input type="radio" name="subNeedContactMethod" value="cell" onchange="subUpdateNeedCellField()"> Cell</label>
+            <label><input type="radio" name="subNeedContactMethod" value="both" onchange="subUpdateNeedCellField()"> Both</label>
+          </div>
+        </div>
+        <div class="field" id="subNeedCellField" style="display:none">
+          <label for="subNeedCell">Your Cell</label>
+          <input type="tel" id="subNeedCell">
+        </div>
+        <div class="cardrow">
+          <div class="field">
+            <label for="subNeedDate">Date</label>
+            <input type="date" id="subNeedDate" required>
+          </div>
+          <div class="field">
+            <label for="subNeedTime">Time</label>
+            <input type="time" id="subNeedTime" required>
+          </div>
+        </div>
+        <div class="field">
+          <label for="subNeedLocation">Town game located in</label>
+          <input type="text" id="subNeedLocation" required>
+        </div>
+        <div class="field">
+          <label for="subNeedCount">How many subs do you need?</label>
+          <input type="number" id="subNeedCount" min="1" value="1" required>
+        </div>
+        <div class="field">
+          <label>Level</label>
+          <div class="radio-row">
+            <label><input type="radio" name="subNeedLevel" value="Beginner"> Beginner</label>
+            <label><input type="radio" name="subNeedLevel" value="Intermediate/Advanced"> Int/Adv</label>
+            <label><input type="radio" name="subNeedLevel" value="All" checked> All</label>
+          </div>
+        </div>
+        <div class="err" id="subNeedErr"></div>
+        <button class="btn btn-navy" type="submit" style="width:100%" id="subNeedSubmitBtn">
+          Send Request to Sub List →</button>
+        <button class="btn btn-outline" type="button" style="width:100%;margin-top:8px" onclick="subShowChoice()">← Back</button>
+      </form>
+    </div>
+
+    <!-- Step 5: need-a-sub confirmation -->
+    <div id="subStepNeedConfirm" style="display:none" class="confirm">
+      <div class="big">🀄</div>
+      <h3>Request sent!</h3>
+      <p id="subNeedConfirmText">Everyone on the sub list who's opted in has been emailed. Fingers crossed!</p>
+      <button class="btn btn-outline" type="button" style="width:100%;margin-top:10px" onclick="closeSubFlow()">Done</button>
+    </div>
+  </div>
+</div>
+
+<!-- ============ SUBSCRIBE TO CLASS & EVENT INFO MODAL ============ -->
+<!-- (removed — Get on Our List + Become a Sub's events checkbox cover this) -->
+
+<!-- Hidden static forms so Netlify detects them at deploy time.
+     Submissions are sent via JS; notifications configured in Netlify UI. -->
+<form name="booking" netlify netlify-honeypot="bot-field" hidden>
+  <input name="bot-field"><input name="firstName"><input name="lastName">
+  <input name="email"><input name="phone"><input name="package">
+  <input name="players"><input name="pricePerPerson"><input name="total">
+  <input name="otherParticipants">
+</form>
+<form name="sublist" netlify netlify-honeypot="bot-field" hidden>
+  <input name="bot-field"><input name="firstName"><input name="lastName">
+  <input name="email"><input name="phone">
+</form>
+<form name="subscribe" netlify netlify-honeypot="bot-field" hidden>
+  <input name="bot-field"><input name="firstName"><input name="lastName">
+  <input name="email"><input name="level">
+</form>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="footer-logo" role="img" aria-label="2 BAM BIRDS original logo"></div>
+  <div class="flogo">2 <span class="bam">BAM</span> <span class="chicks">BIRDS</span></div>
+  <div class="links">
+    <a href="#/about">About Us</a><a href="javascript:void(0)" onclick="openSubFlow()">Find a Sub</a>
+    <a href="#/pricing">Pricing</a><a href="#/shop">Shop</a><a href="#/book">Book Now</a>
+    <a href="#/training">Training Material</a>
+  </div>
+  <div class="links links-social">
+    <a href="https://www.instagram.com/2bambirds" target="_blank" rel="noopener">Instagram</a>
+    <a href="mailto:2BAMbirds@gmail.com">Email Us</a>
+  </div>
+  <div class="fine">© 2026 2 BAM BIRDS · www.2bambirds.com<br>
+    Strategy references only — for complete hands and official rules, see the 2026 National Mah Jongg League card (nmjl.org).<br>
+    Need to update your sub info? Email <a href="mailto:2BAMbirds@gmail.com">2BAMbirds@gmail.com</a> and we'll take care of it,
+    or <a href="/unsubscribe.html">unsubscribe</a> and rejoin with your new info.</div>
+</footer>
+
+<script>
+/* ================= SHOP / MERCHANDISE =================
+   Add products here as you get them — just copy one block below and
+   fill it in. `image` can be a path like "images/tote-bag.jpg" (drop
+   the file in your images/ folder) or a full data:image/... string if
+   you want everything self-contained in this one file.
+   `stripeLink` = a reusable Stripe Payment Link for that exact
+   product (create free in your Stripe Dashboard → Payment Links →
+   copy the URL). Leave stripeLink "" to show a "Coming Soon" button
+   instead of Buy Now. */
+const PRODUCTS=[
+  // Example — delete the leading "//" on each line below once you
+  // have a real product, image, and Stripe link to fill in:
+  // {
+  //   name:"2 BAM BIRDS Tote Bag",
+  //   price:25,
+  //   desc:"Canvas tote with our logo — perfect for hauling your mahjong set.",
+  //   image:"images/tote-bag.jpg",
+  //   stripeLink:"https://buy.stripe.com/xxxxxxxxxxxx"
+  // },
+];
+
+function renderShop(){
+  const grid=document.getElementById("shopGrid");
+  if(!grid)return;
+  if(!PRODUCTS.length){
+    grid.innerHTML=`<div class="shop-empty">
+      <div class="emoji">🛍️ <span class="purple-dot">●</span></div>
+      <h3>Merch Coming Soon!</h3>
+      <p>We're stocking the shop with 2 BAM BIRDS gear and mahjong accessories.
+         Subscribe on the Booking page to hear the moment new items drop!</p>
+    </div>`;
+    return;
+  }
+  grid.innerHTML=PRODUCTS.map(p=>`
+    <div class="shopcard">
+      <div class="thumb"><img src="${p.image}" alt="${p.name}" onerror="this.parentElement.innerHTML='🛍️'"></div>
+      <div class="body">
+        <h3>${p.name}</h3>
+        <p>${p.desc}</p>
+        <div class="price">$${p.price}</div>
+        ${p.stripeLink
+          ? `<a class="btn btn-lavender" href="${p.stripeLink}" target="_blank" rel="noopener">Buy Now</a>`
+          : `<button class="btn btn-outline" disabled>Coming Soon</button>`}
+      </div>
+    </div>`).join("");
+}
+renderShop();
+
+/* ================= TRAINING GALLERY =================
+   Drop your guide images into an images/ folder next to this file
+   using the filenames below (and matching PDFs in pdfs/).
+   Missing images show a styled placeholder automatically. */
+const GUIDES=[
+  {file:"cheat-sheet",            title:"2026 Reference Cheat Sheet",        desc:"Quick guide to playing your best on the 2026 NMJL card — Charleston priorities, card trends & defensive play."},
+  {file:"tile-rules",             title:"Definitions & Rules for Tiles",     desc:"Soaps, NEWS, flowers, dragons, jokers, pungs, kongs, quints & pairs — decoded."},
+  {file:"joker-rules",            title:"Joker Rules",                       desc:"What jokers can and can't do, with clear examples of using them correctly."},
+  {file:"tile-combo-exercises",   title:"Tile Combo Creation Exercises",     desc:"A hands-on exercise: build pungs, runs, NEWS, kongs, quints & sextets."},
+  {file:"guess-the-section",      title:"Guess Which Section of the Card",   desc:"Practice reading sample hands and matching them to sections of the card."},
+  {file:"dealer-responsibilities",title:"Dealer Responsibilities",           desc:"Build the wall, roll, break, deal & start the hand — with a dealer quick checklist."},
+  {file:"charleston-overview",    title:"Charleston Overview",               desc:"The key to a strong start — what the Charleston is and how it flows."},
+  {file:"charleston-directions",  title:"Charleston Directions",             desc:"R-O-L, L-O-R, and the Courtesy Pass — plus what to pass and what to keep."},
+  {file:"defensive-strategies",   title:"Top 10 Defensive Strategies",       desc:"Watch the discards, avoid feeding hands, and play smart defense."},
+  {file:"etiquette",              title:"Common Social Etiquette",           desc:"Good etiquette keeps the game fun, friendly & fair — table courtesy for every player."}
+];
+const gallery=document.getElementById("gallery");
+gallery.innerHTML=GUIDES.map(g=>`
+  <div class="gcard">
+    <div class="thumb">
+      <div class="ph">🀄 ${g.title}<small>image: images/${g.file}.jpeg</small></div>
+      <img src="images/${g.file}.jpeg" alt="${g.title}" loading="lazy"
+           onerror="this.remove()" onload="this.parentElement.querySelector('.ph')?.remove()">
+    </div>
+    <div class="body">
+      <h3>${g.title}</h3>
+      <p>${g.desc}</p>
+      <div class="row">
+        <a class="btn btn-outline" href="images/${g.file}.jpeg" target="_blank" rel="noopener">View</a>
+        <a class="btn btn-purple" href="pdfs/${g.file}.pdf" download>Download PDF</a>
+      </div>
+    </div>
+  </div>`).join("");
+
+/* ================= UPCOMING CLASSES =================
+   Class dates live in the owners' Google Sheet, shared as "Anyone with
+   the link: Viewer" (NOT "Publish to web" — see CORS note below):
+   https://docs.google.com/spreadsheets/d/1Ez_DDG3JAyS-RThXpfWv4r1RMna8iw5IJ9hkzLNSZGU/edit?usp=sharing
+
+   This uses Google's gviz/tq endpoint (not "Publish to web"), because
+   gviz/tq sends proper Access-Control-Allow-Origin headers and works
+   with a plain browser fetch(). "Publish to web" CSV links redirect to
+   a googleusercontent.com URL with no CORS header, which browsers
+   block — that was an earlier bug that made classes never disappear
+   when removed from the sheet (the page was silently failing to fetch
+   and showing hardcoded sample data instead).
+
+   Columns: Date | Title | Type | Time | Price | Slots
+   ("Type" holds a short code — e.g. BE, Group, Private, Play-In, Event —
+   read from whichever column header contains the word "type"; "Title"
+   is the class/instructor name shown in the list and calendar. If a
+   row's Type is ever left blank, the code also tries to guess it from
+   keywords in the Title, so nothing breaks — but filling in Type is
+   the reliable way to get the right colored dot on the calendar.)
+   Owners edit a row in that sheet -> the change shows up here on next
+   page load. Price is read but not displayed on the calendar (pricing
+   lives on the Pricing page); it's parsed here in case that changes. */
+const SHEET_ID="1Ez_DDG3JAyS-RThXpfWv4r1RMna8iw5IJ9hkzLNSZGU";
+const SHEET_CSV=`https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:csv&gid=0`;
+
+/* NOTE: the old single-price-per-package "PAYMENT_LINKS" (Stripe Payment
+   Links) setup has been replaced. Pricing now depends on player count
+   (see PRICING_TABLE below), so checkout sessions are created dynamically
+   by a Netlify Function instead of fixed pre-made links — see chat /
+   netlify/functions/create-checkout.js for setup. */
+
+/* Fallback shown only if the sheet can't be reached or is empty.
+   Currently empty on purpose — see note above the SHEET_CSV constant
+   about the CORS issue with the "Publish to web" CSV link. Once we
+   swap in a CORS-friendly source (see chat), this can stay empty:
+   an empty fallback just means "no classes posted" instead of showing
+   made-up placeholder events. */
+const SAMPLE_CLASSES=[];
+
+let CLASSES=[];
+const MONTHS=["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+
+function parseCSV(text){
+  const rows=[];let row=[],cell="",q=false;
+  for(let i=0;i<text.length;i++){const ch=text[i];
+    if(q){ if(ch=='"'&&text[i+1]=='"'){cell+='"';i++;} else if(ch=='"')q=false; else cell+=ch; }
+    else if(ch=='"')q=true;
+    else if(ch==','){row.push(cell);cell="";}
+    else if(ch=='\n'){row.push(cell.replace(/\r$/,""));rows.push(row);row=[];cell="";}
+    else cell+=ch;}
+  if(cell||row.length){row.push(cell);rows.push(row);}
+  return rows;
+}
+/* Normalize a class "type" (drives the colored dot on the calendar).
+   Tries the raw code from the sheet's Type column first (e.g. "BE",
+   "Group", "Private", "Play-In", "Event"); falls back to guessing from
+   keywords in the Title if Type is blank. Add codes/keywords here if
+   you start using new short codes or class names. */
+function normalizeType(raw){
+  const t=(raw||"").toLowerCase().replace(/[\s-]+/g,"");
+  if(!t) return "";
+  if(t.includes("private")) return "private";
+  if(t.includes("group")) return "group";
+  if(t.includes("playin")) return "play-in";
+  if(t.includes("game")) return "game";
+  if(t.includes("event")||t.includes("social")) return "event";
+  if(t.includes("beginner")||t==="be") return "beginner";
+  return "";
+}
+/* Friendly display label per normalized type — update here if a
+   category's public-facing name changes (e.g. Play-In is shown as
+   "Instructor Play-In"). */
+function typeLabel(t){
+  return {group:"Group",beginner:"Beginner","play-in":"Instructor Play-In",
+    private:"Private",event:"Event",game:"Game Play"}[t]||t;
+}
+function toClass(cols,head){
+  const get=n=>{const i=head.findIndex(h=>h.toLowerCase().includes(n));return i>=0?(cols[i]||"").trim():"";};
+  const rawDate=get("date"); if(!rawDate)return null;
+  let d=new Date(rawDate);
+  if(isNaN(d)) d=new Date(rawDate+" "+new Date().getFullYear());
+  const title=get("title")||get("class")||"Mahjong Class";
+  const price=parseFloat((get("price")||"0").replace(/[^0-9.]/g,""))||0;
+  const parsedSpots=parseInt(get("slot")||get("spot"),10);
+  return {
+    mo:isNaN(d)?rawDate.slice(0,3):MONTHS[d.getMonth()],
+    day:isNaN(d)?"":d.getDate(),
+    title:title,
+    type:normalizeType(get("type"))||normalizeType(title),
+    time:get("time")||"Time TBA",
+    price:price,
+    spots:Number.isNaN(parsedSpots)?null:parsedSpots
+  };
+}
+function renderClassesInto(listEl,classes){
+  if(!listEl)return;
+  if(!classes.length){
+    listEl.innerHTML=`<p style="text-align:center;font-weight:600;padding:20px">
+      No upcoming classes posted right now — subscribe below and we'll email you when new dates go up! <span class="purple-dot">●</span></p>`;
+    return;
+  }
+  listEl.innerHTML=classes.map((c,i)=>`
+    <div class="class-card">
+      <div class="datebox"><div class="mo">${c.mo}</div><div class="day">${c.day}</div></div>
+      <div class="info">
+        <h3>${c.title}</h3>
+        <div class="meta">${c.time}${c.type?" · "+typeLabel(c.type):""}</div>
+        ${c.spots===0?`<div class="spots">Waitlist</div>`:
+          c.spots!==null?`<div class="spots">${c.spots} spots left</div>`:""}
+      </div>
+    </div>`).join("");
+}
+fetch(SHEET_CSV)
+  .then(r=>{if(!r.ok)throw 0;return r.text();})
+  .then(csv=>{
+    const rows=parseCSV(csv).filter(r=>r.some(c=>c.trim()));
+    const head=rows.shift()||[];
+    CLASSES=rows.map(r=>toClass(r,head)).filter(Boolean);
+    assignDates(CLASSES);
+    [mainCal,lessonCal,gameCal].forEach(cal=>{cal.renderList();cal.renderCal();cal.applyDefault();});
+  })
+  .catch(()=>{
+    CLASSES=SAMPLE_CLASSES;assignDates(CLASSES);
+    [mainCal,lessonCal,gameCal].forEach(cal=>{cal.renderList();cal.renderCal();cal.applyDefault();});
+  });
+
+/* Give every class a real Date object (mo/day only in the sheet, so we
+   infer the year: this year, unless that date is already >30 days in the
+   past, in which case we assume next year). Used to place classes on
+   the calendar grid. */
+function assignDates(arr){
+  const today=new Date(); today.setHours(0,0,0,0);
+  arr.forEach(c=>{
+    const monIdx=MONTHS.indexOf(c.mo);
+    if(monIdx<0||!c.day){c.dateObj=null;return;}
+    let yr=today.getFullYear();
+    let d=new Date(yr,monIdx,c.day);
+    if((today-d)/86400000>30){yr+=1; d=new Date(yr,monIdx,c.day);}
+    c.dateObj=d;
+  });
+}
+
+/* ================= (booking modal removed — see Pricing page for checkout) ================= */
+
+function notify(form,data){
+  fetch("/",{method:"POST",
+    headers:{"Content-Type":"application/x-www-form-urlencoded"},
+    body:new URLSearchParams({"form-name":form,...data}).toString()
+  }).catch(()=>{}); // never block the user on a failed notification
+}
+
+/* ================= CALENDAR + VIEW TOGGLE (factory) =================
+   Each calendar instance (main/lesson/game) has its own List/Calendar
+   markup ids and an optional filter over the shared CLASSES array, so
+   the same rendering logic can power the full calendar plus the
+   filtered Learn and Play calendars. Add a new instance any time a
+   new filtered view is needed — just give its markup unique ids and
+   list it in the fetch/catch handlers above. */
+function makeCalendarInstance(ids,filterFn){
+  let calMonth=null; // Date set to the 1st of the month currently shown
+  function classes(){return filterFn?CLASSES.filter(filterFn):CLASSES;}
+  function renderList(){renderClassesInto(document.getElementById(ids.list),classes());}
+  function renderCal(){
+    const grid=document.getElementById(ids.grid);
+    const label=document.getElementById(ids.label);
+    if(!grid||!label)return;
+    const cls=classes();
+
+    if(!calMonth){
+      const upcoming=cls.filter(c=>c.dateObj).sort((a,b)=>a.dateObj-b.dateObj)[0];
+      const base=upcoming?upcoming.dateObj:new Date();
+      calMonth=new Date(base.getFullYear(),base.getMonth(),1);
+    }
+    const yr=calMonth.getFullYear(), mo=calMonth.getMonth();
+    label.textContent=`${MONTHS[mo]==="Jan"?"January":MONTHS[mo]==="Feb"?"February":MONTHS[mo]==="Mar"?"March":
+      MONTHS[mo]==="Apr"?"April":MONTHS[mo]==="May"?"May":MONTHS[mo]==="Jun"?"June":MONTHS[mo]==="Jul"?"July":
+      MONTHS[mo]==="Aug"?"August":MONTHS[mo]==="Sep"?"September":MONTHS[mo]==="Oct"?"October":
+      MONTHS[mo]==="Nov"?"November":"December"} ${yr}`;
+
+    const firstDow=new Date(yr,mo,1).getDay();
+    const daysInMonth=new Date(yr,mo+1,0).getDate();
+
+    let html=["Sun","Mon","Tue","Wed","Thu","Fri","Sat"].map(d=>`<div class="cal-dow">${d}</div>`).join("");
+    for(let i=0;i<firstDow;i++) html+=`<div class="cal-cell empty"></div>`;
+
+    for(let day=1;day<=daysInMonth;day++){
+      const dayClasses=cls.map((c,i)=>({c,i})).filter(({c})=>
+        c.dateObj && c.dateObj.getFullYear()===yr && c.dateObj.getMonth()===mo && c.dateObj.getDate()===day);
+      const has=dayClasses.length>0;
+      html+=`<div class="cal-cell${has?" has-class":""}">
+        <div class="num">${day}</div>
+        ${dayClasses.map(({c,i})=>{
+          const typeClass=c.type==="group"?"type-group":c.type==="play-in"?"type-play-in":
+            c.type==="private"?"type-private":c.type==="event"?"type-event":c.type==="game"?"type-game":"";
+          const short=c.title.length>16?c.title.slice(0,15)+"…":c.title;
+          return `<div class="cal-day-btn ${typeClass}" style="cursor:default" title="${c.title} — ${c.time}">${short}</div>`;
+        }).join("")}
+      </div>`;
+    }
+    grid.innerHTML=html;
+  }
+  function shift(dir){calMonth.setMonth(calMonth.getMonth()+dir);renderCal();}
+  function setView(v){
+    document.getElementById(ids.list).style.display=v==="list"?"block":"none";
+    document.getElementById(ids.cal).style.display=v==="calendar"?"block":"none";
+    document.getElementById(ids.listBtn).classList.toggle("on",v==="list");
+    document.getElementById(ids.calBtn).classList.toggle("on",v==="calendar");
+    document.getElementById(ids.listBtn).setAttribute("aria-pressed",v==="list");
+    document.getElementById(ids.calBtn).setAttribute("aria-pressed",v==="calendar");
+    if(v==="calendar") renderCal();
+  }
+  /* On phones the month grid is cramped, so open the schedule in List
+     view by default. The toggle still lets visitors switch to Calendar. */
+  function applyDefault(){
+    const isMobile=window.matchMedia("(max-width:640px)").matches;
+    setView(isMobile?"list":"calendar");
+  }
+  return {renderList,renderCal,shift,setView,applyDefault};
+}
+
+const mainCal=makeCalendarInstance(
+  {list:"classList",grid:"calGrid",label:"calLabel",cal:"calendarView",listBtn:"viewListBtn",calBtn:"viewCalBtn"},
+  null);
+const lessonCal=makeCalendarInstance(
+  {list:"lessonClassList",grid:"lessonCalGrid",label:"lessonCalLabel",cal:"lessonCalendarView",listBtn:"lessonViewListBtn",calBtn:"lessonViewCalBtn"},
+  c=>["group","beginner","play-in","private"].includes(c.type));
+const gameCal=makeCalendarInstance(
+  {list:"gameClassList",grid:"gameCalGrid",label:"gameCalLabel",cal:"gameCalendarView",listBtn:"gameViewListBtn",calBtn:"gameViewCalBtn"},
+  c=>c.type==="game");
+
+/* ================= TRAINING PASSWORD GATE =================
+   Simple client-side gate — keeps the casual visitor out, but the
+   password lives in this file's source, so treat this as a soft
+   lock (good for a private/curated link), not real security. */
+const TRAINING_PASSWORD="2Bam";
+function checkPassword(){
+  const val=document.getElementById("pwInput").value;
+  if(val===TRAINING_PASSWORD){
+    sessionStorage.setItem("tbc_training_unlocked","yes");
+    document.getElementById("pwErr").style.display="none";
+    document.getElementById("pwInput").value="";
+    document.getElementById("pwGateBg").classList.remove("open");
+    route();
+  } else {
+    document.getElementById("pwErr").style.display="block";
+  }
+}
+function cancelGate(){
+  document.getElementById("pwGateBg").classList.remove("open");
+  if(location.hash==="#/training") location.hash="#/";
+}
+
+/* ================= PAGE ROUTER =================
+   Each functionality lives on its own page. Links use
+   #/about, #/training, #/pricing, #/booking — home is #/ */
+const ROUTES={"#/about":"page-about","#/training":"page-training",
+              "#/learn":"page-learn","#/play":"page-play","#/events":"page-events",
+              "#/book":"page-book","#/lessons":"page-lessons","#/host-event":"page-host-event",
+              "#/lesson-calendar":"page-lesson-calendar","#/game-calendar":"page-game-calendar",
+              "#/upcoming-events":"page-upcoming-events",
+              "#/pricing":"page-lessons","#/booking":"page-booking","#/shop":"page-shop"};
+function route(){
+  const id=ROUTES[location.hash]||"page-home";
+  if(id==="page-training" && sessionStorage.getItem("tbc_training_unlocked")!=="yes"){
+    document.querySelectorAll(".page").forEach(p=>p.classList.toggle("active",p.id==="page-home"));
+    document.getElementById("pwGateBg").classList.add("open");
+    document.getElementById("pwInput").focus();
+    return;
+  }
+  document.getElementById("pwGateBg").classList.remove("open");
+  document.querySelectorAll(".page").forEach(p=>p.classList.toggle("active",p.id===id));
+  window.scrollTo(0,0);
+}
+window.addEventListener("hashchange",route);
+route();
+
+/* ================= MEGA BAND SWIPE-TO-REVEAL =================
+   On the home page's 3 full-width Learn/Events/Play bands: tap the
+   hint (or swipe left) slides the front content away to reveal that
+   band's hub menu stacked behind it, in the same space — swipe right
+   or tap "‹ Back" to bring the front content back. */
+function toggleMegaReveal(hintEl){
+  hintEl.closest(".mega-link").classList.toggle("revealed");
+}
+document.querySelectorAll(".mega-link").forEach(sec=>{
+  let startY=0, startX=0;
+  sec.addEventListener("touchstart",e=>{
+    startY=e.touches[0].clientY;
+    startX=e.touches[0].clientX;
+  },{passive:true});
+  sec.addEventListener("touchend",e=>{
+    const dx=e.changedTouches[0].clientX-startX;
+    const dy=Math.abs(e.changedTouches[0].clientY-startY);
+    if(dy<60 && dx<-40) sec.classList.add("revealed");    // swipe left → reveal
+    else if(dy<60 && dx>40) sec.classList.remove("revealed"); // swipe right → close
+  },{passive:true});
+});
+
+/* Keep each front/back pair from overlapping oddly: size the stack
+   to whichever layer is taller, so nothing clips or leaves a gap
+   whether Learn's 3 options or Play/Events' 2 are showing. */
+function sizeMegaStacks(){
+  document.querySelectorAll(".mega-stack").forEach(stack=>{
+    const front=stack.querySelector(".mega-front");
+    const back=stack.querySelector(".mega-back");
+    if(!front||!back)return;
+    stack.style.minHeight=Math.max(front.offsetHeight,back.offsetHeight)+"px";
+  });
+}
+window.addEventListener("load",sizeMegaStacks);
+window.addEventListener("resize",sizeMegaStacks);
+setTimeout(sizeMegaStacks,300); // catch late-loading webfonts changing text height
+
+/* ================= SUBSCRIBE (Get on Our List boxes) =================
+   These boxes now collect first/last name and skill level alongside
+   email. They still notify via Netlify Forms as before, and now ALSO
+   register into the same sub/subscriber database used by Find a Sub,
+   so everyone ends up in one place (visible in /admin.html) with a
+   "Class/Event Info" flag instead of living in a separate list. */
+function wireSubscribeForm(formId, emailId, msgId, firstId, lastId, levelId){
+  const form=document.getElementById(formId);
+  if(!form)return;
+  form.addEventListener("submit",e=>{
+    e.preventDefault();
+    const firstName=document.getElementById(firstId).value.trim();
+    const lastName=document.getElementById(lastId).value.trim();
+    const email=document.getElementById(emailId).value.trim();
+    const level=document.getElementById(levelId).value;
+    notify("subscribe",{firstName,lastName,email,level});
+    subApi("register",{firstName,lastName,email,level,permission:false,wantsEvents:true}).catch(()=>{});
+    document.getElementById(msgId).style.display="block";
+    e.target.reset();
+  });
+}
+wireSubscribeForm("subForm","subEmail","subMsg","subFirst","subLast","subLevel");
+wireSubscribeForm("subFormHome","subEmailHome","subMsgHome","subFirstHome","subLastHome","subLevelHome");
+
+/* ================= PACKAGE CHECKOUT (Pricing page buttons) =================
+   Clicking a "Book ___" button opens a short info form (name, address,
+   cell, email). On submit, that info is sent to Netlify Forms (form
+   name "booking") — view submissions in your Netlify dashboard under
+   Site > Forms > booking. You can also turn on an email notification
+   per submission under Site settings > Forms > Form notifications, so
+   you get pinged the moment someone books.
+   ...then the matching Stripe Payment Link opens in a new tab. */
+
+/* ================= DYNAMIC PRICING LOOKUP =================
+   Mirrors the owners' pricing spreadsheet exactly. Per-person price
+   depends on package AND number of players (NOT a flat rate — e.g.
+   Group Lessons is $200/person at 4 players but $800/person solo,
+   since the package targets a similar total either way). If the
+   sheet changes, update the numbers below to match. */
+const PRICING_TABLE={
+  group:{
+    label:"Group Lessons", min:1, max:8,
+    unitNote:"4-session series",
+    prices:{1:800,2:400,3:270,4:200,5:200,6:200,7:229,8:200}
+  },
+  beginner:{
+    label:"Beginner Essentials Program", min:1, max:8,
+    unitNote:"2-session program",
+    prices:{1:525,2:270,3:175,4:130,5:130,6:130,7:149,8:130}
+  },
+  playin:{
+    label:"Play-In Session", min:4, max:4,
+    unitNote:"2 hours — flat rate, requires 4 players",
+    prices:{4:200}, flatRate:true
+  }
+};
+
+let bfPkgKey=null;
+
+function openBookFlow(pkgKey){
+  bfPkgKey=pkgKey;
+  const entry=PRICING_TABLE[pkgKey];
+  if(!entry){ alert("Sorry, that package isn't available for online booking yet. Please email 2BAMbirds@gmail.com."); return; }
+  document.getElementById("bfTitle1").textContent=`Book: ${entry.label}`;
+  document.getElementById("bfSubtitle1").textContent=entry.unitNote;
+  const playersInput=document.getElementById("bfPlayers");
+  playersInput.min=entry.min; playersInput.max=entry.max;
+  playersInput.disabled=(entry.min===entry.max);
+  // Leave blank so the person actively chooses — except for a fixed-count
+  // package like Play-In (min===max), where there's nothing to choose and
+  // it just sits at that number (field stays enabled, not greyed out).
+  playersInput.value = (entry.min===entry.max) ? entry.max : "";
+  document.getElementById("bfOverMaxNote").style.display = (entry.max===8) ? "block" : "none";
+  document.getElementById("bfErr1").style.display="none";
+  updateBfPrice();
+  document.getElementById("bfStep1").style.display="block";
+  document.getElementById("bfStep2").style.display="none";
+  document.getElementById("bookFlowBg").classList.add("open");
+}
+function closeBookFlow(){
+  document.getElementById("bookFlowBg").classList.remove("open");
+  bfPkgKey=null;
+}
+function updateBfPrice(){
+  const entry=PRICING_TABLE[bfPkgKey];
+  if(!entry)return;
+  const players=parseInt(document.getElementById("bfPlayers").value,10);
+  const pricePerPerson=entry.prices[players];
+  const box=document.getElementById("bfPriceBox");
+  if(!pricePerPerson){
+    box.style.display="none";
+    return;
+  }
+  box.style.display="block";
+  const total=entry.flatRate?pricePerPerson:pricePerPerson*players;
+  document.getElementById("bfPricePerPerson").textContent=
+    entry.flatRate ? `Flat rate for ${players} players` : `$${pricePerPerson} per person × ${players}`;
+  document.getElementById("bfTotal").textContent=`Total: $${total}`;
+}
+document.getElementById("bfPlayers").addEventListener("input",()=>{
+  document.getElementById("bfErr1").style.display="none";
+  updateBfPrice();
+});
+
+function bookFlowToStep2(){
+  const entry=PRICING_TABLE[bfPkgKey];
+  const players=parseInt(document.getElementById("bfPlayers").value,10);
+  if(!players||!entry.prices[players]){
+    document.getElementById("bfErr1").style.display="block";
+    return;
+  }
+  const pricePerPerson=entry.prices[players];
+  const total=entry.flatRate?pricePerPerson:pricePerPerson*players;
+
+  document.getElementById("bfConfirmPackage").textContent=entry.label;
+  document.getElementById("bfConfirmPlayers").textContent=`${players} player${players>1?"s":""}`;
+  document.getElementById("bfConfirmTotal").textContent=`Total: $${total}`;
+
+  // build "other participant" fields — buyer is one of the players,
+  // so we collect names/emails for the rest
+  const wrap=document.getElementById("bfOthersWrap");
+  wrap.innerHTML="";
+  if(players>1){
+    const heading=document.createElement("div");
+    heading.className="subtitle";
+    heading.style.marginTop="18px";
+    heading.textContent="Other players in your group";
+    wrap.appendChild(heading);
+    for(let i=1;i<players;i++){
+      const row=document.createElement("div");
+      row.className="cardrow";
+      row.innerHTML=`
+        <div class="field"><label>Player ${i+1} Name</label>
+          <input type="text" class="bfOtherName" required></div>
+        <div class="field"><label>Player ${i+1} Email</label>
+          <input type="email" class="bfOtherEmail" required></div>`;
+      wrap.appendChild(row);
+    }
+  }
+
+  document.getElementById("bfErr2").style.display="none";
+  document.getElementById("bfStep1").style.display="none";
+  document.getElementById("bfStep2").style.display="block";
+}
+function bookFlowToStep1(){
+  document.getElementById("bfStep2").style.display="none";
+  document.getElementById("bfStep1").style.display="block";
+}
+
+document.getElementById("bfForm").addEventListener("submit", async e=>{
+  e.preventDefault();
+  const entry=PRICING_TABLE[bfPkgKey];
+  const players=parseInt(document.getElementById("bfPlayers").value,10);
+  const pricePerPerson=entry.prices[players];
+  const total=entry.flatRate?pricePerPerson:pricePerPerson*players;
+
+  const firstName=document.getElementById("bfFirst").value.trim();
+  const lastName=document.getElementById("bfLast").value.trim();
+  const email=document.getElementById("bfEmail").value.trim();
+  const phone=document.getElementById("bfPhone").value.trim();
+
+  const otherNames=[...document.querySelectorAll(".bfOtherName")].map(el=>el.value.trim());
+  const otherEmails=[...document.querySelectorAll(".bfOtherEmail")].map(el=>el.value.trim());
+  const others=otherNames.map((n,i)=>`${n} <${otherEmails[i]}>`).join("; ");
+
+  if(!firstName||!lastName||!email||!phone||otherNames.some(n=>!n)||otherEmails.some(em=>!em)){
+    document.getElementById("bfErr2").style.display="block";
+    return;
+  }
+
+  const bookingData={
+    firstName, lastName, email, phone,
+    package:entry.label, players:String(players),
+    pricePerPerson:String(pricePerPerson), total:String(total),
+    otherParticipants:others
+  };
+  notify("booking", bookingData); // Netlify Forms — booking record
+
+  if(document.getElementById("bfSublist").checked){
+    notify("sublist", {firstName, lastName, email, phone}); // Netlify Forms — sub list opt-in
+    subApi("register", {firstName, lastName, email, cell:phone, permission:true, wantsEvents:false}).catch(()=>{});
+  }
+
+  const submitBtn=document.getElementById("bfSubmitBtn");
+  submitBtn.disabled=true;
+  submitBtn.textContent="Redirecting to payment…";
+
+  // Server-side price is recomputed from the same table — this call
+  // never trusts a client-submitted total. Requires the companion
+  // Netlify Function (see /netlify/functions/create-checkout.js) to
+  // be deployed with a STRIPE_SECRET_KEY set — see chat for setup.
+  try{
+    const res=await fetch("/.netlify/functions/create-checkout",{
+      method:"POST",
+      headers:{"Content-Type":"application/json"},
+      body:JSON.stringify({package:bfPkgKey, players, buyerEmail:email, buyerName:`${firstName} ${lastName}`})
+    });
+    const data=await res.json();
+    if(data && data.url){
+      window.location.href=data.url;
+    } else {
+      throw new Error("no checkout url returned");
+    }
+  }catch(err){
+    submitBtn.disabled=false;
+    submitBtn.textContent="Confirm & Continue to Payment →";
+    alert("We received your booking info, but couldn't start the payment step automatically. "+
+          "We'll follow up by email to complete payment — or you can reach us directly at 2BAMbirds@gmail.com.");
+  }
+});
+
+function wireBookFlowButton(btnId, pkgKey){
+  const btn=document.getElementById(btnId);
+  if(!btn)return;
+  btn.addEventListener("click",e=>{
+    e.preventDefault();
+    openBookFlow(pkgKey);
+  });
+}
+wireBookFlowButton("payGroupBtn","group");
+wireBookFlowButton("payBeginnerBtn","beginner");
+wireBookFlowButton("payPlayinBtn","playin");
+
+/* ================= FIND A SUB FLOW =================
+   Backend: netlify/functions/subs.js (Netlify Blobs storage + Resend
+   email). Calls go to /.netlify/functions/subs with a JSON body of
+   the shape {action, data}. See that file for the three actions:
+   "register", "check", "request". */
+const SUB_API = "/.netlify/functions/subs";
+
+function subApi(action, data){
+  return fetch(SUB_API,{
+    method:"POST",
+    headers:{"Content-Type":"application/json"},
+    body:JSON.stringify({action,data})
+  }).then(r=>r.json());
+}
+
+const subSteps=["subStepChoice","subStepContact",
+  "subStepBecameConfirm","subStepNeed","subStepNeedConfirm"];
+function subShow(id){
+  subSteps.forEach(s=>{document.getElementById(s).style.display = s===id?"block":"none";});
+}
+
+function openSubFlow(){
+  document.getElementById("subFlowBg").classList.add("open");
+  subShow("subStepChoice");
+}
+function closeSubFlow(){
+  document.getElementById("subFlowBg").classList.remove("open");
+}
+document.getElementById("subFlowBg").addEventListener("click",e=>{
+  if(e.target.id==="subFlowBg") closeSubFlow();
+});
+
+function subShowChoice(){ subShow("subStepChoice"); }
+function subGoBecome(){ subShow("subStepContact"); }
+
+document.getElementById("subContactForm").addEventListener("submit", async e=>{
+  e.preventDefault();
+  const btn=document.getElementById("subContactSubmitBtn");
+  const errEl=document.getElementById("subContactErr");
+  errEl.style.display="none";
+
+  const permission=document.getElementById("subPermissionCheck").checked;
+  const wantsEvents=document.getElementById("subWantsEvents").checked;
+  if(!permission && !wantsEvents){
+    errEl.textContent="Please check at least one box — the sub list, class/event updates, or both.";
+    errEl.style.display="block";
+    return;
+  }
+
+  const data={
+    firstName:document.getElementById("subFirstName").value.trim(),
+    lastName:document.getElementById("subLastName").value.trim(),
+    cell:document.getElementById("subCell").value.trim(),
+    email:document.getElementById("subBecomeEmail").value.trim(),
+    town:document.getElementById("subTown").value.trim(),
+    townScope:(document.querySelector('input[name="subTownScope"]:checked')||{}).value || "own",
+    level:(document.querySelector('input[name="subLevel"]:checked')||{}).value || "All",
+    permission,
+    wantsEvents
+  };
+  btn.disabled=true; btn.textContent="Joining…";
+  try{
+    const res=await subApi("register",data);
+    if(!res.ok) throw new Error(res.error||"Something went wrong.");
+    document.getElementById("subBecameConfirmText").textContent = permission
+      ? "Thanks for becoming a sub. We'll reach out any time a group nearby needs an extra player."
+      : "Thanks for signing up! We'll keep you posted on new classes and events.";
+    // Only offer the "need a sub" shortcut to people who actually joined the sub list.
+    document.querySelector('#subStepBecameConfirm .btn-turquoise').style.display = permission ? "block" : "none";
+    subShow("subStepBecameConfirm");
+  }catch(err){
+    errEl.textContent=err.message;
+    errEl.style.display="block";
+  }finally{
+    btn.disabled=false; btn.textContent="Join →";
+  }
+});
+
+function subGoNeed(){
+  subShow("subStepNeed");
+}
+function subGoNeedAfterBecoming(){
+  // Carry the email/name they just entered into the Need-a-Sub form.
+  document.getElementById("subNeedEmail").value=document.getElementById("subBecomeEmail").value.trim();
+  document.getElementById("subNeedName").value=
+    (document.getElementById("subFirstName").value.trim()+" "+document.getElementById("subLastName").value.trim()).trim();
+  subShow("subStepNeed");
+}
+
+function subUpdateNeedCellField(){
+  const method=(document.querySelector('input[name="subNeedContactMethod"]:checked')||{}).value || "email";
+  const show = method==="cell" || method==="both";
+  document.getElementById("subNeedCellField").style.display = show ? "block" : "none";
+  document.getElementById("subNeedCell").required = show;
+}
+
+document.getElementById("subNeedForm").addEventListener("submit", async e=>{
+  e.preventDefault();
+  const btn=document.getElementById("subNeedSubmitBtn");
+  const errEl=document.getElementById("subNeedErr");
+  errEl.style.display="none";
+  const contactMethod=(document.querySelector('input[name="subNeedContactMethod"]:checked')||{}).value || "email";
+  if((contactMethod==="cell" || contactMethod==="both") && !document.getElementById("subNeedCell").value.trim()){
+    errEl.textContent="Please enter your cell number, or switch back to Email contact.";
+    errEl.style.display="block";
+    return;
+  }
+  const data={
+    name:document.getElementById("subNeedName").value.trim(),
+    email:document.getElementById("subNeedEmail").value.trim(),
+    date:document.getElementById("subNeedDate").value,
+    time:document.getElementById("subNeedTime").value,
+    location:document.getElementById("subNeedLocation").value.trim(),
+    numSubs:document.getElementById("subNeedCount").value,
+    level:(document.querySelector('input[name="subNeedLevel"]:checked')||{}).value || "All",
+    contactMethod,
+    cell:document.getElementById("subNeedCell").value.trim()
+  };
+  btn.disabled=true; btn.textContent="Sending…";
+  try{
+    const res=await subApi("request",data);
+    if(!res.ok) throw new Error(res.error||"Something went wrong.");
+    document.getElementById("subNeedConfirmText").textContent=
+      res.recipientsCount>0
+        ? `Emailed ${res.sent} of ${res.recipientsCount} sub${res.recipientsCount===1?"":"s"} on the list. Fingers crossed!`
+        : "Your request was saved, but there's no one else on the sub list yet to notify.";
+    subShow("subStepNeedConfirm");
+  }catch(err){
+    errEl.textContent=err.message;
+    errEl.style.display="block";
+  }finally{
+    btn.disabled=false; btn.textContent="Send Request to Sub List →";
+  }
+});
+
+
+</script>
+</body>
+</html>
